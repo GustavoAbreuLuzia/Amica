@@ -10,6 +10,9 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { primaryColor } from "assets/jss/material-kit-react.jsx";
 
 import customInputStyle from "assets/jss/material-kit-react/components/customInputStyle.jsx";
 
@@ -31,6 +34,11 @@ function CustomInput({ ...props }) {
     dateFormat
   } = props;
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: {main: primaryColor},
+    },
+  });
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
     [" " + classes.labelRootSuccess]: success && !error
@@ -58,42 +66,55 @@ function CustomInput({ ...props }) {
     formControlClasses = classes.formControl;
   }
   return (
-    <FormControl {...formControlProps} className={formControlClasses}>
-      {labelText !== undefined ? (
-        <InputLabel
-          className={classes.labelRoot + " " + labelClasses}
-          htmlFor={id}
-          {...labelProps}
-        >
-          {labelText}
-        </InputLabel>
-      ) : null}
-      {datepicker ? 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <DatePicker
-            autoOk
-            disableFuture
-            id={id}
-            openTo="year"
-            value={valueDate}
-            onChange={onChangeDate}
-            format={dateFormat}
-            views={["year", "month", "date"]}
-            className={inputClasses + " " + marginTop + " " + classes.disabled + " " + underlineClasses}            
-        />
-      </MuiPickersUtilsProvider>
-      : 
-      <Input
-        classes={{
-          input: inputClasses,
-          root: marginTop,
-          disabled: classes.disabled,
-          underline: underlineClasses
-        }}
-        id={id}
-        {...inputProps}
-      />}
-    </FormControl>
+    <ThemeProvider theme={theme}>
+      <FormControl {...formControlProps} className={formControlClasses}>
+        {labelText !== undefined && datepicker ? (
+          <InputLabel
+            className={classes.labelRoot + " " + labelClasses}
+            htmlFor={id}
+            shrink={datepicker && valueDate ? true : false}
+            {...labelProps}
+          >
+            {labelText}
+          </InputLabel>
+        ) : null}
+        {labelText !== undefined && !datepicker ? (
+          <InputLabel
+            className={classes.labelRoot + " " + labelClasses}
+            htmlFor={id}
+            {...labelProps}
+          >
+            {labelText}
+          </InputLabel>
+        ) : null}
+        {datepicker ? 
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <DatePicker
+              autoOk
+              disableFuture
+              clearable
+              id={id}
+              openTo="year"
+              value={valueDate}
+              onChange={onChangeDate}
+              format={dateFormat}
+              views={["year", "month", "date"]}
+              className={inputClasses + " " + marginTop + " " + classes.disabled + " " + underlineClasses}            
+          />
+        </MuiPickersUtilsProvider>
+        : 
+        <Input
+          classes={{
+            input: inputClasses,
+            root: marginTop,
+            disabled: classes.disabled,
+            underline: underlineClasses
+          }}
+          id={id}
+          {...inputProps}
+        />}
+      </FormControl>
+    </ThemeProvider>
   );
 }
 

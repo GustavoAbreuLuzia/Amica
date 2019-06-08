@@ -9,6 +9,11 @@ const customInputStyle = {
   disabled: {
     "&:before": {
       borderColor: "transparent !important"
+    },
+    "& div input": {
+      "&:before": {
+        borderColor: "transparent !important"
+      }
     }
   },
   underline: {
@@ -18,16 +23,35 @@ const customInputStyle = {
     },
     "&:after": {
       borderColor: primaryColor
+    },
+    "& div": {
+      "&:hover:not($disabled):before,&:before": {
+        borderColor: "#D2D2D2 !important",
+        borderWidth: "1px !important"
+      },
+      "&:after": {
+        borderColor: primaryColor
+      }
     }
   },
   underlineError: {
     "&:after": {
       borderColor: dangerColor
+    },
+    "& div": {
+      "&:after": {
+        borderColor: dangerColor
+      }
     }
   },
   underlineSuccess: {
     "&:after": {
-      borderColor: successColor
+      borderColor: dangerColor
+    },
+    "& div":{
+      "&:after": {
+        borderColor: dangerColor
+      }
     }
   },
   whiteUnderline: {
@@ -36,6 +60,14 @@ const customInputStyle = {
     },
     "&:after": {
       borderColor: "#FFFFFF"
+    },
+    "& div": {
+      "&:hover:not($disabled):before,&:before": {
+        borderColor: "#FFFFFF"
+      },
+      "&:after": {
+        borderColor: "#FFFFFF"
+      }
     }
   },
   labelRoot: {
@@ -74,12 +106,31 @@ const customInputStyle = {
     },
     "&::placeholder": {
       color: "#AAAAAA"
+    },
+    "& div input":{ //DatePicker
+      color: "#495057",
+      "&,&::placeholder": {
+        fontSize: "14px",
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+        fontWeight: "400",
+        lineHeight: "1.42857",
+        opacity: "1"
+      },
+      "&::placeholder": {
+        color: "#AAAAAA"
+      },
     }
   },
   whiteInput: {
     "&,&::placeholder": {
       color: "#FFFFFF",
       opacity: "1"
+    },
+    "& div input": {
+      "&,&::placeholder": {
+        color: "#FFFFFF",
+        opacity: "1"
+      }
     }
   }
 };

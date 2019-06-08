@@ -5,6 +5,9 @@ import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import adoptPageStyle from "assets/jss/material-kit-react/views/adoptPage.jsx";
 
+// Router
+import { Route } from "react-router-dom";  
+
 //Components
 import StackGrid from "react-stack-grid";
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -16,6 +19,8 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
+import Button from 'components/CustomButtons/Button.jsx';
+import DialogActions from '@material-ui/core/DialogActions';
 
 // Icons
 import Close from "@material-ui/icons/Close";
@@ -76,6 +81,9 @@ class Adopt extends React.Component {
       var x = [];
       x[modal] = false;
       this.setState(x);
+    }
+    adopt(name, history) {
+        history.push('/Contacts/' + name);
     }
     render() {
         const { classes } = this.props;
@@ -160,7 +168,7 @@ class Adopt extends React.Component {
                                 Cão muito meigo, esterilizado. Dá-se bem com outros animais. Está sociabilizado.
                                 </label>
                                 {<Carousel {...{dots: false,
-                                    arrows: false,
+                                    arrows: true,
                                     infinite: true,
                                     speed: 500, 
                                     slidesToShow: 1,
@@ -196,6 +204,18 @@ class Adopt extends React.Component {
                                     </div>
                                 </Carousel>}
                             </DialogContent>
+                            <DialogActions>
+                                <Route render={({ history }) => (
+                                    <Button
+                                        type='button'
+                                        color="primary"
+                                        className={classes.buttonContactSendMessage}
+                                        onClick={() => this.adopt("Alf", history)}
+                                        >
+                                        Adotar
+                                    </Button>
+                                )} />                                
+                            </DialogActions>
                             </Dialog>
                             <Dialog
                             classes={{
@@ -230,7 +250,7 @@ class Adopt extends React.Component {
                                     Está esterilizada. Cão ideal para uma família com crianças e de preferência com espaço exterior!❤️❤️❤️
                                 </label>
                                 {<Carousel {...{dots: false,
-                                    arrows: false,
+                                    arrows: true,
                                     infinite: true,
                                     speed: 500, 
                                     slidesToShow: 1,
@@ -259,6 +279,18 @@ class Adopt extends React.Component {
                                     </div>
                                 </Carousel>}
                             </DialogContent>
+                            <DialogActions>
+                                <Route render={({ history }) => (
+                                    <Button
+                                        type='button'
+                                        color="primary"
+                                        className={classes.buttonContactSendMessage}
+                                        onClick={() => this.adopt("Sky", history)}
+                                        >
+                                        Adotar
+                                    </Button>
+                                )} />                                
+                            </DialogActions>
                             </Dialog>
                             <Dialog
                             classes={{
@@ -294,7 +326,7 @@ class Adopt extends React.Component {
                                 Se estiver interessado envie mensagem, caso não possa divulgue e partilhe para encontrar um lar a esta princesa ❤🐾
                                 </label>
                                 {<Carousel {...{dots: false,
-                                    arrows: false,
+                                    arrows: true,
                                     infinite: true,
                                     speed: 500, 
                                     slidesToShow: 1,
@@ -323,7 +355,19 @@ class Adopt extends React.Component {
                                     </div>
                                 </Carousel>}
                             </DialogContent>
-                            </Dialog>
+                            <DialogActions>
+                                <Route render={({ history }) => (
+                                    <Button
+                                        type='button'
+                                        color="primary"
+                                        className={classes.buttonContactSendMessage}
+                                        onClick={() => this.adopt("Mia", history)}
+                                        >
+                                        Adotar
+                                    </Button>
+                                )} />                                
+                            </DialogActions>
+                        </Dialog>
                     </div>
                 </div>
             </div>

@@ -176,7 +176,7 @@ class Partners extends React.Component {
                                 </div>
                             </GridItem>
                             <GridItem xs={2} className={classes.contactSendMessage}>
-                                <Button className={classes.buttonContactSendMessage} type="button" color={this.state.checked ? "primary" : "default"}>Registrar</Button>
+                                <Button className={classes.buttonContactSendMessage} type="button"  color="primary" disabled={!this.state.checked}>Registrar</Button>
                             </GridItem>
                         </GridContainer>
                         <GridContainer xs={12}>

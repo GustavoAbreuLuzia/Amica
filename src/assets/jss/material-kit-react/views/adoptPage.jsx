@@ -1,4 +1,4 @@
-import { container, title, warningColor } from "assets/jss/material-kit-react.jsx";
+import { container, title, warningColor, primaryColor } from "assets/jss/material-kit-react.jsx";
 import imagesStyles from "assets/jss/material-kit-react/imagesStyles.jsx";
 import modalStyle from "assets/jss/material-kit-react/modalStyle.jsx";
 
@@ -43,7 +43,7 @@ const adoptPage = {
         textAlign: "center",
     },
     paddingBottom: {
-        paddingBottom: "10px"
+        paddingBottom: "20px"
     },
     imageNone: {
         display: "none"
@@ -52,8 +52,14 @@ const adoptPage = {
         textAlign: "center"
     },
     imgCarousel: {
-        width: "80%",
+        width: "40%",
         margin: "auto"
+    },    
+    buttonContactSendMessage: {
+        height: "40px",
+        "&:hover": {
+          backgroundColor: "#FF9800 !Important"
+        }
     },
     ...imagesStyles,
     ...modalStyle

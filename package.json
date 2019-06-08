@@ -27,7 +27,8 @@
     "react-stack-grid": "^0.7.1",
     "react-stonecutter": "^0.3.10",
     "react-swipeable-views": "0.13.1",
-    "react-transition-group": "^4.1.0"
+    "react-transition-group": "^4.1.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",

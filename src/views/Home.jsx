@@ -136,10 +136,7 @@ class Home extends React.Component {
                           description={<span>{this.state.classGrid[1] !== undefined ? <span onClick={() => this.handleClickOpen("modalLotados")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<span className={this.state.classGrid[1]}>
                             {this.state.classGrid[1] !== undefined ? <Overlay/> : ""}
                             Neste momento, a Associação Amicus Canis-AMICA, NÃO consegue acolher mais animais. ESTAMOS LOTADOS!!!!!
-                            Temos 9 cães no espaço que utilizamos, com duas boxes, e mais animais em Famílias de Acolhimento (FAT)! Neste momento é-nos impossível o acolhimento de mais cães. Para que entendam, os 9 animais, formam grupo dentro das boxes. Para colocar lá outro, teríamos que os adaptar primeiro durante algum tempo ao grupo, senão podem atacá-lo e seria trágico. 
-                            Se alguém puder ser FAT, é a melhor ajuda que nos pode dar para retirarmos animais da rua.
-                            Agradecemos o apoio e a compreensão de todos!
-                            Obrigada 🐾
+                            Temos 9 cães no espaço que utilizamos, com duas boxes, e mais animais em Famílias de Acolhimento (FAT)! Neste momento é-nos impossível o acolhimento de mais cães. Para que entendam, os 9 animais, formam grupo dentro das boxes.
                             </span></span>
                           }
                           icon={Warning}
@@ -166,7 +163,7 @@ class Home extends React.Component {
                           title="Cão encontrado"
                           description={<span>{this.state.classText[3] !== undefined ? <span onClick={() => this.handleClickOpen("modalEncontrado")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<img width={"100%"} src={caoEncontrado}></img><p id={"pInfoDesc3"} className={this.state.classText[3]}>{this.state.classText[3] !== undefined ? <Overlay/> : ""}Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
                             Alguém sabe quem é o dono? Precisamos encontra-lo para que consiga voltar a felicidade da sua casa e aproveitar para descansar das voltas a que andou nas ruas da cidade.
-                            Esperamos que logo o seu dono seja encontrado para que o cãozinho não fiquei deprimido pela falta de pessoas conhecidas.</p></span>}
+                            Esperamos que logo</p></span>}
                           icon={Warning}
                           iconColor="warning"
                           vertical={false}
@@ -177,6 +174,66 @@ class Home extends React.Component {
                         <InfoArea
                           title="Cão para adoção"
                           description={<span><img width={"100%"} src={alf}></img><p id={"pInfoDesc4"} className={this.state.classText[4]}>{this.state.classText[4] !== undefined ? <Overlay/> : ""}Para adoção responsável ou F.A.T.! (Bragança)
+                            Cão muito meigo, esterilizado. Dá-se bem com outros animais. Está sociabilizado.</p></span>}
+                          icon={Favorite}
+                          iconColor="success"
+                          vertical={false}
+                        />
+                      </GridItem>
+                      <GridItem id={"ggg"} hasImage={false} xs>
+                        <InfoArea
+                          title="Estamos Lotados 😥"
+                          description={<span>{this.state.classGrid[5] !== undefined ? <span onClick={() => this.handleClickOpen("modalLotados")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<span className={this.state.classGrid[5]}>
+                            {this.state.classGrid[5] !== undefined ? <Overlay/> : ""}
+                            Neste momento, a Associação Amicus Canis-AMICA, NÃO consegue acolher mais animais. ESTAMOS LOTADOS!!!!!
+                            Temos 9 cães no espaço que utilizamos, com duas boxes, e mais animais em Famílias de Acolhimento (FAT)! Neste momento é-nos impossível o acolhimento de mais cães. Para que entendam, os 9 animais, formam grupo dentro das boxes.
+                            </span></span>
+                          }
+                          icon={Warning}
+                          iconColor="warning"
+                          vertical={false}
+                          descriptionClassWrapper={this.state.classGrid[5] !== undefined ? classes.descriptionClassWrapper : ""}
+                        />
+                      </GridItem>
+                      <GridItem id={"hhh"} hasImage={false} xs>
+                        <InfoArea
+                          title="Gatinha para adoção"
+                          description={<span>Gatinha recolhida da rua à procura de uma família que a ame e cuide para sempre.
+                          É um poço de ternura.
+                          Se estiver interessado envie mensagem, caso não possa divulgue e partilhe para encontrar um lar a esta princesa ❤🐾
+                          </span>}
+                          icon={FilterVintage}
+                          iconColor="success"
+                          vertical={false}
+                          classGrid={this.state.classGrid[6]}
+                        />
+                      </GridItem>
+                      <GridItem id={"jjj"} hasImage={true} xs>
+                        <InfoArea
+                          title="Cão encontrado"
+                          description={<span>{this.state.classText[7] !== undefined ? <span onClick={() => this.handleClickOpen("modalEncontrado")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<img width={"100%"} src={caoEncontrado}></img><p id={"pInfoDesc7"} className={this.state.classText[7]}>{this.state.classText[7] !== undefined ? <Overlay/> : ""}Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
+                            Alguém sabe quem é o dono? Precisamos encontra-lo para que consiga voltar a felicidade da sua casa e aproveitar para descansar das voltas a que andou nas ruas da cidade.
+                            Esperamos que logo</p></span>}
+                          icon={Warning}
+                          iconColor="warning"
+                          vertical={false}
+                          descriptionClassWrapper={this.state.classText[7] !== undefined ? classes.descriptionClassWrapper : ""}
+                        />
+                      </GridItem>
+                      <GridItem id={"kkk"} hasImage={true} xs>
+                        <InfoArea
+                          title="Cão para adoção"
+                          description={<span><img width={"100%"} src={alf}></img><p id={"pInfoDesc8"} className={this.state.classText[8]}>{this.state.classText[8] !== undefined ? <Overlay/> : ""}Para adoção responsável ou F.A.T.! (Bragança)
+                            Cão muito meigo, esterilizado. Dá-se bem com outros animais. Está sociabilizado.</p></span>}
+                          icon={Favorite}
+                          iconColor="success"
+                          vertical={false}
+                        />
+                      </GridItem>
+                      <GridItem id={"mmm"} hasImage={true} xs>
+                        <InfoArea
+                          title="Cão para adoção"
+                          description={<span><img width={"100%"} src={alf}></img><p id={"pInfoDesc9"} className={this.state.classText[9]}>{this.state.classText[9] !== undefined ? <Overlay/> : ""}Para adoção responsável ou F.A.T.! (Bragança)
                             Cão muito meigo, esterilizado. Dá-se bem com outros animais. Está sociabilizado.</p></span>}
                           icon={Favorite}
                           iconColor="success"
@@ -252,7 +309,7 @@ class Home extends React.Component {
                         <label className={classes.descriptionModal}>Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
                             Alguém sabe quem é o dono? Precisamos encontra-lo para que consiga voltar a felicidade da sua casa e aproveitar para descansar das voltas a que andou nas ruas da cidade.
                             Esperamos que logo o seu dono seja encontrado para que o cãozinho não fiquei deprimido pela falta de pessoas conhecidas.</label>
-                        <img width={"100%"} src={caoEncontrado}></img>
+                        <img className={classes.imgModal} src={caoEncontrado}></img>
                       </DialogContent>
                     </Dialog>
                   </div>

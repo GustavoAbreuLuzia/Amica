@@ -26,10 +26,21 @@ class Contacts extends React.Component {
       super(props);
     }
     componentDidMount(){
-      window.scrollTo(0,0);      
+      window.scrollTo(0,0);   
+    }
+    predefinedMessage(location){
+      const path = location.pathname.split("/")
+
+      if(path.length > 2){
+        const message = "Gostaria de adotar o animalzinho chamado " + path.pop() + ", quando podemos marcar para encontrar ele?";
+        return message;
+      }
+      else {
+        return null;
+      }
     }
     render() {
-        const { classes } = this.props;
+        const { classes, location } = this.props;
         return (  
           <div className={classNames(classes.main, classes.mainRaised)}>
             <div className={classes.container}>
@@ -97,7 +108,8 @@ class Contacts extends React.Component {
                             fullWidth: true
                         }}
                         inputProps={{
-                          multiline: true
+                          multiline: true,
+                          value: this.predefinedMessage(location)
                         }}
                       />
                     </GridItem>

@@ -66,6 +66,11 @@ const landingPageStyle = {
   descriptionClassWrapper: {
     position: "relative"
   },
+  imgModal: {
+    margin: "auto",
+    display: "block",
+    width: "40%"
+  },
   ...imagesStyles, 
   ...modalStyle
 };

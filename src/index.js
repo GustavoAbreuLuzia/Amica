@@ -25,7 +25,7 @@ ReactDOM.render(
       <BrowserRouter>
         <div className="content">
           <Route render={({ location }) => {
-            const { pathname, key } = location
+            const { pathname, key } = location;
             return (
               <div>
               <HeaderComponent home={location.pathname === "/" ? true : false}></HeaderComponent>
@@ -39,8 +39,8 @@ ReactDOM.render(
                 >
                   <Switch location={location}>
                     <Route exact path="/" component={Home}/>
-                    <Route path="/Contacts" component={Contacts} />
-                    <Route path="/Adopt" component={Adopt} />
+                    <Route path="/Contacts" render={(props) => <Contacts {...props}/>}/>
+                    <Route path="/Adopt" component={Adopt}/>
                     <Route path="/Partner" component={Partner} />
                   </Switch>
                 </Transition>
