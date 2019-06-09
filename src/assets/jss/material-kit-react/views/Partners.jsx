@@ -72,6 +72,9 @@ const landingPageStyle = {
     textCenter: {
         textAlign: "center"
     },
+    textConditions: {
+        fontSize: "14px"
+    },
     ...imagesStyles,
     ...customCheckboxRadioSwitch,
     ...tooltipsStyle

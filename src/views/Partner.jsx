@@ -181,17 +181,17 @@ class Partners extends React.Component {
                         </GridContainer>
                         <GridContainer xs={12}>
                             <GridItem xs={12} className={classNames(classes.primaryColor, classes.textCenter)}>
-                                <p>Termos e Condições:</p>
+                                <p><h5>Termos e Condições:</h5></p>
                             </GridItem>
                             <GridItem xs={6} className={classes.primaryColor}>
-                                <ul>
+                                <ul className={classes.textConditions}>
                                     <li>Os parceiros serão atualizados à medida de novas parcerias.</li>
                                     <li>No pagamento da cota anual, recebem uma vinheta que cola no cartão que lhes é fornecido.</li>
                                     <li>Os cartões e as vinhetas serão levantados no posto da Galp, Sacor, junto ao Polis.</li>
                                 </ul>
                             </GridItem>
                             <GridItem xs={6} className={classes.primaryColor}>
-                                <ul>
+                                <ul className={classes.textConditions}>
                                     <li>Nos vários parceiros, através da apresentação do cartão, têm direito aos descontos acordados.</li>    
                                     <li>No caso de o sócio não pagar as cotas durante dois anos consecutivos será eliminado da lista de sócios.</li>
                                 </ul>
