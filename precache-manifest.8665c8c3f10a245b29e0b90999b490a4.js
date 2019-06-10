@@ -148,7 +148,7 @@ self.__precacheManifest = [
     "url": "/Amica/static/media/header.87d8537e.jpg"
   },
   {
-    "revision": "56ee9019ddbcdb92a104acc60f5734e9",
+    "revision": "759c9f5a0272b82a45e77e99ed9d1a71",
     "url": "/Amica/index.html"
   }
 ];
