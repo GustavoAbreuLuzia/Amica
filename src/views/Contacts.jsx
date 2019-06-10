@@ -31,7 +31,7 @@ class Contacts extends React.Component {
     predefinedMessage(location){
       const path = location.pathname.split("/")
 
-      if(path.length > 2){
+      if(path.length > 3){
         const message = "Gostaria de adotar o animalzinho chamado " + path.pop() + ", quando podemos marcar para encontrar ele?";
         return message;
       }

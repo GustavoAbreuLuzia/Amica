@@ -40,7 +40,7 @@ class HeaderComponent extends React.Component {
                       classes.navLink
                     }
                   >
-                    <NavLink to="/"
+                    <NavLink to="/Amica"
                       className={
                         classes.warningText + " " + 
                         classes.marginRight5 +
@@ -57,7 +57,7 @@ class HeaderComponent extends React.Component {
               <List className={classes.list}>
                 <ListItem className={classes.listItem}>
                   <Button color="transparent">
-                    <NavLink to="/Contacts"
+                    <NavLink to="/Amica/Contacts"
                       className={
                         classes.textHeader +
                         " " +
@@ -71,7 +71,7 @@ class HeaderComponent extends React.Component {
                 <ListItem className={classes.listItem}>
                   <Button color="transparent" 
                     children={
-                      <NavLink to="/Adopt"
+                      <NavLink to="/Amica/Adopt"
                         className={
                           classes.textHeader +
                           " " +
@@ -86,7 +86,7 @@ class HeaderComponent extends React.Component {
                 <ListItem className={classes.listItem}>
                   <Button color="transparent" 
                     children={
-                      <NavLink to="/Partner"
+                      <NavLink to="/Amica/Partner"
                         className={
                           classes.textHeader +
                           " " +
