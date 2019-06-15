@@ -36,16 +36,41 @@ function Transition(props) {
 class Home extends React.Component {
     constructor(props) {
       super(props);
+      this.updateDimensions = this.updateDimensions.bind(this);
       this.state = {
         classGrid: [], 
         classText: [],
         modalLotados: false,
         modalEncontrado: false,
-        refreshPage: false
+        refreshPage: false,
+        gridColumnWidth: "33.33%",
+        windowSize: 1280,
+        windowHeight: 800
       };
+    }
+    componentWillMount() {
+      this.updateDimensions();
     }
     componentDidMount(){
       window.scrollTo(0,0);
+      window.addEventListener("resize", this.updateDimensions);
+    }
+    componentWillUnmount(){
+      window.removeEventListener("resize", this.updateDimensions);
+    } 
+    updateDimensions() {
+      let columnWidth = "33.33%";
+      const windowSize = window.innerWidth;
+      if(windowSize > 1200) {
+        columnWidth = "33.33%";
+      }
+      else if(windowSize > 780) {
+        columnWidth = "50%";
+      }
+      else {
+        columnWidth = "100%";
+      }
+      this.setState({gridColumnWidth: columnWidth, windowSize: windowSize, windowHeight: window.innerHeight});
     }
     handleClickOpen(modal) {
       var x = [];
@@ -65,7 +90,7 @@ class Home extends React.Component {
           const item = this.grid.props.children[i];
           const itemHeight = document.getElementById(item.props.id).clientHeight;
           
-          if (itemHeight > 250) {
+          if (itemHeight > 255) {
             if (item.props.hasImage) {
               const itemDescHeight = document.getElementById("pInfoDesc" + i).clientHeight;
 
@@ -94,7 +119,7 @@ class Home extends React.Component {
         const { classes } = this.props;
         return (
             <div>
-              <Parallax filter image={require("../assets/img/header.jpg")}>
+              <Parallax filter image={this.state.windowSize > 780 ? require("../assets/img/header.jpg") : require("../assets/img/headerMobile.jpg")}>
                 <div className={classes.container}>
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={6}>
@@ -109,15 +134,15 @@ class Home extends React.Component {
                   </GridContainer>
                 </div>
               </Parallax>
-              <div className={classNames(classes.main, classes.mainRaised)}>
+              <div className={this.state.windowHeight > 500 ? classNames(classes.main, classes.mainRaised) : classNames(classes.main, classes.mainRaisedMobileHor)}>
                 <div className={classes.container}>
                   <div className={classes.section}>
                     <GridContainer justify="center">
                       <GridItem className={classes.gridItemTitle} xs={12} sm={12} md={8}>
-                        <h2 className={classNames(classes.titleWrning, classes.title)}>Vamos falar sobre os animais?</h2>
+                        <h2 className={this.state.windowHeight > 500 ? classNames(classes.titleWrning, classes.title) : classNames(classes.titleWrning, classes.titleMobile)}>Vamos falar sobre os animais?</h2>
                       </GridItem>
                     </GridContainer>
-                    <StackGrid gridRef={grid => this.grid = grid} onLayout={this.setLayout()} columnWidth={"33.33%"}>
+                    <StackGrid gridRef={grid => this.grid = grid} onLayout={this.setLayout()} columnWidth={this.state.gridColumnWidth}>
                       <GridItem id={"xxx"} hasImage={false} xs>
                         <InfoArea
                           title="Abandono não!"
@@ -127,13 +152,14 @@ class Home extends React.Component {
                           icon={Info}
                           iconColor="danger"
                           vertical={false}
-                          classGrid={this.state.classGrid[0]}
+                          //classGrid={this.state.classGrid[0]} Fazer verificação por quantidade de letras´
+                          // quando não tiver imagem
                         />
                       </GridItem>
                       <GridItem id={"yyy"} hasImage={false} xs>
                         <InfoArea
                           title="Estamos Lotados 😥"
-                          description={<span>{this.state.classGrid[1] !== undefined ? <span onClick={() => this.handleClickOpen("modalLotados")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<span className={this.state.classGrid[1]}>
+                          description={<span>{this.state.classGrid[1] !== undefined ? <span onClick={() => this.handleClickOpen("modalLotados")} className={this.state.windowSize > 780 ? classNames(classes.hoverUnderline, classes.spanVerMais) : classNames(classes.hoverUnderline, classes.spanVerMais, classes.spanVerMaisMobile)}>Ver Mais</span> : ""}<span className={this.state.classGrid[1]}>
                             {this.state.classGrid[1] !== undefined ? <Overlay/> : ""}
                             Neste momento, a Associação Amicus Canis-AMICA, NÃO consegue acolher mais animais. ESTAMOS LOTADOS!!!!!
                             Temos 9 cães no espaço que utilizamos, com duas boxes, e mais animais em Famílias de Acolhimento (FAT)! Neste momento é-nos impossível o acolhimento de mais cães. Para que entendam, os 9 animais, formam grupo dentro das boxes.
@@ -155,13 +181,14 @@ class Home extends React.Component {
                           icon={FilterVintage}
                           iconColor="success"
                           vertical={false}
-                          classGrid={this.state.classGrid[2]}
+                          // classGrid={this.state.classGrid[2]} Fazer verificação por quantidade de letras´
+                          // quando não tiver imagem
                         />
                       </GridItem>
                       <GridItem id={"qqq"} hasImage={true} xs>
                         <InfoArea
                           title="Cão encontrado"
-                          description={<span>{this.state.classText[3] !== undefined ? <span onClick={() => this.handleClickOpen("modalEncontrado")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<img width={"100%"} src={caoEncontrado}></img><p id={"pInfoDesc3"} className={this.state.classText[3]}>{this.state.classText[3] !== undefined ? <Overlay/> : ""}Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
+                          description={<span>{this.state.classText[3] !== undefined ? <span onClick={() => this.handleClickOpen("modalEncontrado")} className={this.state.windowSize > 780 ? classNames(classes.hoverUnderline, classes.spanVerMais) : classNames(classes.hoverUnderline, classes.spanVerMais, classes.spanVerMaisMobile)}>Ver Mais</span> : ""}<img width={"100%"} src={caoEncontrado}></img><p id={"pInfoDesc3"} className={this.state.classText[3]}>{this.state.classText[3] !== undefined ? <Overlay/> : ""}Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
                             Alguém sabe quem é o dono? Precisamos encontra-lo para que consiga voltar a felicidade da sua casa e aproveitar para descansar das voltas a que andou nas ruas da cidade.
                             Esperamos que logo</p></span>}
                           icon={Warning}
@@ -183,7 +210,7 @@ class Home extends React.Component {
                       <GridItem id={"ggg"} hasImage={false} xs>
                         <InfoArea
                           title="Estamos Lotados 😥"
-                          description={<span>{this.state.classGrid[5] !== undefined ? <span onClick={() => this.handleClickOpen("modalLotados")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<span className={this.state.classGrid[5]}>
+                          description={<span>{this.state.classGrid[5] !== undefined ? <span onClick={() => this.handleClickOpen("modalLotados")} className={this.state.windowSize > 780 ? classNames(classes.hoverUnderline, classes.spanVerMais) : classNames(classes.hoverUnderline, classes.spanVerMais, classes.spanVerMaisMobile)}>Ver Mais</span> : ""}<span className={this.state.classGrid[5]}>
                             {this.state.classGrid[5] !== undefined ? <Overlay/> : ""}
                             Neste momento, a Associação Amicus Canis-AMICA, NÃO consegue acolher mais animais. ESTAMOS LOTADOS!!!!!
                             Temos 9 cães no espaço que utilizamos, com duas boxes, e mais animais em Famílias de Acolhimento (FAT)! Neste momento é-nos impossível o acolhimento de mais cães. Para que entendam, os 9 animais, formam grupo dentro das boxes.
@@ -205,13 +232,14 @@ class Home extends React.Component {
                           icon={FilterVintage}
                           iconColor="success"
                           vertical={false}
-                          classGrid={this.state.classGrid[6]}
+                          //classGrid={this.state.classGrid[6]} Fazer verificação por quantidade de letras´
+                          // quando não tiver imagem
                         />
                       </GridItem>
                       <GridItem id={"jjj"} hasImage={true} xs>
                         <InfoArea
                           title="Cão encontrado"
-                          description={<span>{this.state.classText[7] !== undefined ? <span onClick={() => this.handleClickOpen("modalEncontrado")} className={classNames(classes.hoverUnderline, classes.spanVerMais)}>Ver Mais</span> : ""}<img width={"100%"} src={caoEncontrado}></img><p id={"pInfoDesc7"} className={this.state.classText[7]}>{this.state.classText[7] !== undefined ? <Overlay/> : ""}Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
+                          description={<span>{this.state.classText[7] !== undefined ? <span onClick={() => this.handleClickOpen("modalEncontrado")} className={this.state.windowSize > 780 ? classNames(classes.hoverUnderline, classes.spanVerMais) : classNames(classes.hoverUnderline, classes.spanVerMais, classes.spanVerMaisMobile)}>Ver Mais</span> : ""}<img width={"100%"} src={caoEncontrado}></img><p id={"pInfoDesc7"} className={this.state.classText[7]}>{this.state.classText[7] !== undefined ? <Overlay/> : ""}Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
                             Alguém sabe quem é o dono? Precisamos encontra-lo para que consiga voltar a felicidade da sua casa e aproveitar para descansar das voltas a que andou nas ruas da cidade.
                             Esperamos que logo</p></span>}
                           icon={Warning}
@@ -309,7 +337,7 @@ class Home extends React.Component {
                         <label className={classes.descriptionModal}>Este cão foi encontrado em Bragança na rua. Está acolhido por quem o encontrou. 
                             Alguém sabe quem é o dono? Precisamos encontra-lo para que consiga voltar a felicidade da sua casa e aproveitar para descansar das voltas a que andou nas ruas da cidade.
                             Esperamos que logo o seu dono seja encontrado para que o cãozinho não fiquei deprimido pela falta de pessoas conhecidas.</label>
-                        <img className={classes.imgModal} src={caoEncontrado}></img>
+                        <img className={this.state.windowSize > 780 ? classes.imgModal : classes.imgModalFull} src={caoEncontrado}></img>
                       </DialogContent>
                     </Dialog>
                   </div>

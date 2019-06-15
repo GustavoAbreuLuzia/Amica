@@ -100,7 +100,7 @@ class Header extends React.Component {
             </IconButton>
           </Hidden>
         </Toolbar>
-        <Hidden mdUp implementation="css">
+        <Hidden mdUp implementation="css">   
           <Drawer
             variant="temporary"
             anchor={"right"}
@@ -110,7 +110,7 @@ class Header extends React.Component {
             }}
             onClose={this.handleDrawerToggle}
           >
-            <div className={classes.appResponsive}>
+            <div onClick={this.handleDrawerToggle} className={classes.appResponsive}>
               {leftLinks}
               {rightLinks}
             </div>

@@ -54,15 +54,40 @@ function Transition(props) {
 class Adopt extends React.Component {
     constructor(props) {
       super(props);    
+      this.updateDimensions = this.updateDimensions.bind(this);
       this.state = {
         modalAlf: false,
         modalSky: false,
         modalGatinha: false,
-        value: 0
+        value: 0,
+        gridColumnWidth: "33.33%",
+        windowSize: 1280,
+        windowHeight: 800
       }  
     }
+    componentWillMount() {
+        this.updateDimensions();
+    }
     componentDidMount(){
-      window.scrollTo(0,0);      
+        window.scrollTo(0,0);
+        window.addEventListener("resize", this.updateDimensions);
+    }
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.updateDimensions);
+    } 
+    updateDimensions() {
+        let columnWidth = "20%";
+        const windowSize = window.innerWidth;
+        if(windowSize > 1200) {
+            columnWidth = "20%";
+        }
+        else if(windowSize > 780) {
+            columnWidth = "33.33%";
+        }
+        else {
+            columnWidth = "50%";
+        }
+        this.setState({gridColumnWidth: columnWidth, windowSize: windowSize, windowHeight: window.innerHeight});
     }
     setTabState = (value) => {
         this.setState({ value });   
@@ -130,7 +155,7 @@ class Adopt extends React.Component {
                             ]}
                             setTabState={this.setTabState}
                         />
-                        <StackGrid gridRef={grid => this.grid = grid} columnWidth={"20%"}>
+                        <StackGrid gridRef={grid => this.grid = grid} columnWidth={this.state.gridColumnWidth}>
                             {
                                 animalsToRender
                             }                            
@@ -168,7 +193,7 @@ class Adopt extends React.Component {
                                 Cão muito meigo, esterilizado. Dá-se bem com outros animais. Está sociabilizado.
                                 </label>
                                 {<Carousel {...{dots: false,
-                                    arrows: true,
+                                    arrows: this.state.windowSize > 780,
                                     infinite: true,
                                     speed: 500, 
                                     slidesToShow: 1,
@@ -178,28 +203,28 @@ class Adopt extends React.Component {
                                         <img
                                             src={alf}
                                             alt="First slide"
-                                            className={classes.imgCarousel}
+                                            className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                         />
                                     </div>
                                     <div className={classes.divCarousel}>
                                     <img
                                         src={alf1}
                                         alt="Second slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                     <div className={classes.divCarousel}>
                                         <img
                                             src={alf2}
                                             alt="slide"
-                                            className={classes.imgCarousel}
+                                            className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                         />
                                     </div>
                                     <div className={classes.divCarousel}>
                                         <img
                                             src={alf3}
                                             alt="Last slide"
-                                            className={classes.imgCarousel}
+                                            className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                         />
                                     </div>
                                 </Carousel>}
@@ -250,7 +275,7 @@ class Adopt extends React.Component {
                                     Está esterilizada. Cão ideal para uma família com crianças e de preferência com espaço exterior!❤️❤️❤️
                                 </label>
                                 {<Carousel {...{dots: false,
-                                    arrows: true,
+                                    arrows: this.state.windowSize > 780,
                                     infinite: true,
                                     speed: 500, 
                                     slidesToShow: 1,
@@ -260,21 +285,21 @@ class Adopt extends React.Component {
                                     <img
                                         src={sky}
                                         alt="First slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                     <div className={classes.divCarousel}>
                                     <img
                                         src={sky1}
                                         alt="Second slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                     <div className={classes.divCarousel}>
                                     <img
                                         src={sky2}
                                         alt="Last slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                 </Carousel>}
@@ -326,7 +351,7 @@ class Adopt extends React.Component {
                                 Se estiver interessado envie mensagem, caso não possa divulgue e partilhe para encontrar um lar a esta princesa ❤🐾
                                 </label>
                                 {<Carousel {...{dots: false,
-                                    arrows: true,
+                                    arrows: this.state.windowSize > 780,
                                     infinite: true,
                                     speed: 500, 
                                     slidesToShow: 1,
@@ -336,21 +361,21 @@ class Adopt extends React.Component {
                                     <img
                                         src={gatinha1}
                                         alt="First slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                     <div className={classes.divCarousel}>
                                     <img
                                         src={gatinha2}
                                         alt="Second slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                     <div className={classes.divCarousel}>
                                     <img
                                         src={gatinha3}
                                         alt="Last slide"
-                                        className={classes.imgCarousel}
+                                        className={this.state.windowSize > 780 ? classes.imgCarousel : classes.imgCarouselMobile}
                                     />
                                     </div>
                                 </Carousel>}

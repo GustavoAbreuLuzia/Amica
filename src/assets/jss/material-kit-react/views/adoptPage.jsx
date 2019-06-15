@@ -54,6 +54,10 @@ const adoptPage = {
     imgCarousel: {
         width: "40%",
         margin: "auto"
+    },
+    imgCarouselMobile: {
+        width: "100%",
+        margin: "auto"
     },    
     buttonContactSendMessage: {
         height: "40px",

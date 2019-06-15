@@ -143,7 +143,8 @@ const headerStyle = {
     borderTop: "none",
     textAlign: "left",
     paddingRight: "0px",
-    paddingLeft: "0",
+    paddingLeft: "0",    
+    backgroundColor: "#ebebeb",
     ...transition
   }
 };
