@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Amica/precache-manifest.0132fbb3829b1d83c4e14b42757732f3.js"
+  "/Amica/precache-manifest.860ac25eddc432551241471429e1c92e.js"
 );
 
 workbox.clientsClaim();
