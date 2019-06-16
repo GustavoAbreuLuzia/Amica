@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Amica/static/media/alf (3).5434f779.jpg"
   },
   {
-    "revision": "b814d31b4d0bf23068bd",
+    "revision": "fcd2dcbc04fbec5c9b1c",
     "url": "/Amica/static/css/main.54eea6a0.chunk.css"
   },
   {
@@ -76,8 +76,8 @@ self.__precacheManifest = [
     "url": "/Amica/static/media/alf (2).aff8da6f.jpg"
   },
   {
-    "revision": "b814d31b4d0bf23068bd",
-    "url": "/Amica/static/js/main.b814d31b.chunk.js"
+    "revision": "fcd2dcbc04fbec5c9b1c",
+    "url": "/Amica/static/js/main.fcd2dcbc.chunk.js"
   },
   {
     "revision": "f27e80b05510faa2578a75b6d31cb091",
@@ -152,7 +152,7 @@ self.__precacheManifest = [
     "url": "/Amica/static/media/headerMobile.7a8c34ac.jpg"
   },
   {
-    "revision": "d6ea9c651667f2ca8995d789b0a886d4",
+    "revision": "4f26d4fa3a3c277d82ffe3017d0fed13",
     "url": "/Amica/index.html"
   }
 ];
