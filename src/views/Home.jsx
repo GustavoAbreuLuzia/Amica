@@ -148,7 +148,7 @@ class Home extends React.Component {
                           title="Abandono não!"
                           description={<span>Campanha da <a className={classes.hoverUnderline} href="https://www.facebook.com/animalife.pt">Animalife</a> com a participação do Grupo Operacional Cinotécnico da Unidade Especial de Polícia da PSP. 
                           O jornal <a className={classes.hoverUnderline} href="https://www.facebook.com/Publico">Público</a> destaca a campanha e nós os nossos “atores”! 
-                          Nunca é demais relembrar: não abandone ou maltrate os animais. <br/> <a className={classes.hoverUnderline} style={{float: "right"}} href="https://www.publico.pt/2019/05/14/p3/video/uma-campanha-contra-o-abandono-de-animais-porque-ele-nunca-te-vai-esquecer-20190514-122859">Veja a notícia completa.</a></span>}
+                          Nunca é demais relembrar: não abandone ou maltrate os animais. <br/> <a className={classes.hoverUnderline} style={{float: "right"}} target={"_blank"} href="https://www.publico.pt/2019/05/14/p3/video/uma-campanha-contra-o-abandono-de-animais-porque-ele-nunca-te-vai-esquecer-20190514-122859">Veja a notícia completa.</a></span>}
                           icon={Info}
                           iconColor="danger"
                           vertical={false}

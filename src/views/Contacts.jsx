@@ -24,9 +24,32 @@ import Button from 'components/CustomButtons/Button.jsx';
 class Contacts extends React.Component {
     constructor(props) {
       super(props);
+      this.updateDimensions = this.updateDimensions.bind(this);
+      this.state = {
+        windowSize: 1280,
+        windowHeight: 800
+      };
+    }
+    componentWillMount() {
+      this.updateDimensions();
     }
     componentDidMount(){
-      window.scrollTo(0,0);   
+      window.scrollTo(0,0);
+      window.addEventListener("resize", this.updateDimensions);
+      window.addEventListener("orientationchange", this.updateDimensions);
+    }
+    componentWillUnmount(){
+      window.removeEventListener("resize", this.updateDimensions);
+      window.removeEventListener("orientationchange", this.updateDimensions);
+    } 
+    updateDimensions() {
+      if(window.innerWidth !== this.state.windowSize){
+        this.setState({windowSize:  window.innerWidth});
+      }
+
+      if(window.innerHeight !== this.state.windowHeight){
+        this.setState({windowHeight: window.innerHeight});
+      }
     }
     predefinedMessage(location){
       const path = location.pathname.split("/")
@@ -50,9 +73,9 @@ class Contacts extends React.Component {
                     <h2 className={classNames(classes.titleWrning, classes.title)}>Contactos</h2>
                   </GridItem>
                 </GridContainer>
-                <GridContainer xs={12}>
-                  <GridContainer xs={8}>
-                    <GridItem xs={6}>
+                <GridContainer xs={12} className={this.state.windowSize > 780 ? "" : classes.containerMobile} justify={this.state.windowSize > 780 ? "" : "center"}>
+                  <GridContainer  xs={this.state.windowSize > 780 ? 8 : 12}>
+                    <GridItem xs={this.state.windowSize < 780 && this.state.windowHeight > 500 ? 12 : 6}>
                       <CustomInput
                         labelText="Nome"
                         id="material"
@@ -64,7 +87,7 @@ class Contacts extends React.Component {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={6}>
+                    <GridItem xs={this.state.windowSize < 780 && this.state.windowHeight > 500 ? 12 : 6}>
                       <CustomInput
                         labelText="Email"
                         id="material"
@@ -76,7 +99,7 @@ class Contacts extends React.Component {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={6}>
+                    <GridItem xs={this.state.windowSize < 780 && this.state.windowHeight > 500 ? 12 : 6}>
                       <CustomInput
                         labelText="Telefone"
                         id="material"
@@ -88,7 +111,7 @@ class Contacts extends React.Component {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={6}>
+                    <GridItem xs={this.state.windowSize < 780 && this.state.windowHeight > 500 ? 12 : 6}>
                       <CustomInput
                         labelText="Assunto"
                         id="material"
@@ -113,11 +136,11 @@ class Contacts extends React.Component {
                         }}
                       />
                     </GridItem>
-                    <GridItem xs={12} className={classes.contactSendMessage}>
+                    <GridItem xs={12} className={this.state.windowSize < 780 && this.state.windowHeight > 500 ? classes.contactSendMessageMobile : classes.contactSendMessage}>
                       <Button className={classes.buttonContactSendMessage} type="button" color="primary">Enviar Mensagem</Button>
                     </GridItem>                    
                   </GridContainer>
-                  <GridContainer className={classes.otherContacts} xs={4}>
+                  <GridContainer className={this.state.windowSize > 780 ? classes.otherContacts : classes.otherContactsMobile} xs={this.state.windowSize > 780 ? 4 : 12}>
                     <GridItem className={classes.contactAlign}>
                       <a className={classes.contactIconFacebook} target={"_blank"} href={"https://www.facebook.com/pg/Associação-Amicus-Canis-AMICA-248535658531716"}>
                         <i className={classNames(classes.socialIcons, classes.contactIconFacebook) + " fab fa-facebook"} />
@@ -136,7 +159,7 @@ class Contacts extends React.Component {
                 </GridContainer>                
               </div>
             </div>
-            <img className={classes.imgBackground} src={CatDog}></img>
+            <img className={this.state.windowSize < 780 && this.state.windowHeight > 500 ? classes.imgBackgroundMobile : classes.imgBackground} src={CatDog}></img>
           </div>
         )
     }

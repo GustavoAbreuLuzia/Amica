@@ -64,11 +64,20 @@ const landingPageStyle = {
     right: "0",
     paddingTop: "22px"
   },
+  otherContactsMobile: {
+    paddingTop: "10px",
+    paddingBottom: "20px"
+  },
   contactAccountSub:{
     fontWeight: "500"
   },
   contactSendMessage: {
     justifyContent: "flex-end",
+    display: "flex",
+    marginBottom: "10px"
+  },
+  contactSendMessageMobile: {
+    justifyContent: "center",
     display: "flex",
     marginBottom: "10px"
   },
@@ -82,6 +91,15 @@ const landingPageStyle = {
     right: "10px",
     bottom: "5px",
     position: "absolute"
+  },
+  imgBackgroundMobile: {
+    width: "50px",
+    right: "10px",
+    bottom: "5px",
+    position: "absolute"
+  },
+  containerMobile: {
+    margin: "0"
   }
 };
 
