@@ -75,6 +75,27 @@ const landingPageStyle = {
     textConditions: {
         fontSize: "14px"
     },
+    termsMobile: {
+        margin: 0
+    },
+    termsTitleMobile: {
+        marginTop: "25px",
+        paddingLeft: "20px"
+    },
+    textCenterMobile: {
+        textAlign: "center"
+    },
+    containerMobile: {
+      margin: "0"
+    },
+    companyGridMobile: {
+        margin: "40px 0 0 0",
+        paddingBottom: "40px"
+    },
+    companyGridItemMobile: {
+        display: "flex",
+        margin: "10px 0"
+    },
     ...imagesStyles,
     ...customCheckboxRadioSwitch,
     ...tooltipsStyle
