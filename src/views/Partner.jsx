@@ -20,6 +20,9 @@ import tascaNoz from "assets/img/tascaNoz.png"
 import vetCantarias from "assets/img/vetCantarias.png"
 import vetCenter from "assets/img/vetCenter.png"
 import vetSantiago from "assets/img/vetSantiago.png"
+import nordeste from "assets/img/nordeste.png"
+import visaoOrtopedica from "assets/img/visaoOrtopedica.png"
+import academiaJdc from "assets/img/academiaJdc.png"
 
 //Components
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -178,7 +181,7 @@ class Partners extends React.Component {
                             </GridItem>
                             <GridItem xs={this.state.windowSize > 780 ? 6 : 12} className={this.state.windowSize > 780 ? classes.primaryColor : classNames(classes.primaryColor, classes.textCenterMobile)}> 
                                 <p className={classes.contactAccountSub}>
-                                    Alem deste cadastro é necessário enviar o comprovante do depósito para nós.<br/>{this.state.windowSize < 780 && this.state.windowHeight > 500 ? <br/> : ""}
+                                    Além deste registro é necessário enviar o comprovante do depósito para nós.<br/>{this.state.windowSize < 780 && this.state.windowHeight > 500 ? <br/> : ""}
                                     EMAIL: AssociacaoAmica@hotmail.com<br/>{this.state.windowSize < 780 && this.state.windowHeight > 500 ? <br/> : ""}
                                     IBAN: PT50 0045 2216 4027 1549 63919<br/>{this.state.windowSize < 780 && this.state.windowHeight > 500 ? <br/> : ""}
                                     IBAN/SWIFT: CCCMPTPL
@@ -324,6 +327,21 @@ class Partners extends React.Component {
                                 <img src={briFitness} alt="Last slide" className={classes.imgFluid}/>
                                 </div>
                             </GridItem>
+                            <GridItem xs={this.state.windowSize > 780 ? 2 : (this.state.windowHeight > 500 ? 6 : 4)} className={this.state.windowSize > 780 ? classes.companyGridItem : classes.companyGridItemMobile}>
+                            <div className={classes.companyImgContainer}>
+                                <img src={nordeste} alt="Last slide" className={classes.imgFluid}/>
+                                </div>
+                            </GridItem>  
+                            <GridItem xs={this.state.windowSize > 780 ? 2 : (this.state.windowHeight > 500 ? 6 : 4)} className={this.state.windowSize > 780 ? classes.companyGridItem : classes.companyGridItemMobile}>
+                            <div className={classes.companyImgContainer}>
+                                <img src={visaoOrtopedica} alt="Last slide" className={classes.imgFluid}/>
+                                </div>
+                            </GridItem>  
+                            <GridItem xs={this.state.windowSize > 780 ? 2 : (this.state.windowHeight > 500 ? 6 : 4)} className={this.state.windowSize > 780 ? classes.companyGridItem : classes.companyGridItemMobile}>
+                            <div className={classes.companyImgContainer}>
+                                <img src={academiaJdc} alt="Last slide" className={classes.imgFluid}/>
+                                </div>
+                            </GridItem>                            
                         </GridContainer>
                     </div>
                 </div>

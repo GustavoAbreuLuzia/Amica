@@ -4,6 +4,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";  
 
 //Styles
+import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
@@ -34,69 +35,53 @@ class HeaderComponent extends React.Component {
             leftLinks={
               <List className={classes.list}>
                 <ListItem className={classes.listItem}>
-                  <Button
-                    color="transparent"
+                  <NavLink to="/Amica"
                     className={
-                      classes.navLink
+                      classes.warningText + " " + 
+                      classes.marginRight5 +
+                      " fab"
                     }
                   >
-                    <NavLink to="/Amica"
+                    <Button
+                      color="transparent"
                       className={
-                        classes.warningText + " " + 
-                        classes.marginRight5 +
-                        " fab"
+                        classes.navLink
                       }
                     >
-                      <img width={100} src={require("../../assets/img/logoTransparent.png")}></img>
-                    </NavLink>
-                  </Button>
+                      <img width={100} src={require("../../assets/img/logoTransparent.png")}></img>                    
+                    </Button>
+                  </NavLink>
                 </ListItem>
               </List>
             }
             rightLinks={
               <List className={classes.list}>
                 <ListItem className={classes.listItem}>
-                  <Button color="transparent">
-                    <NavLink to="/Amica/Contacts"
-                      className={
-                        classes.textHeader +
-                        " " +
-                        classes.marginRight5
-                      }
-                    >
-                      Contactos
-                    </NavLink>
-                  </Button>
+                  <NavLink to="/Amica/Contacts"
+                    className={classNames(classes.textHeader, classes.marginRight5)}
+                  >
+                    <Button color="transparent">
+                        Contactos
+                    </Button>
+                  </NavLink>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                  <Button color="transparent" 
-                    children={
-                      <NavLink to="/Amica/Adopt"
-                        className={
-                          classes.textHeader +
-                          " " +
-                          classes.marginRight5
-                        }
-                      >
-                        Adotar
-                      </NavLink>
-                    }
-                  />
+                  <NavLink to="/Amica/Adopt"
+                    className={classNames(classes.textHeader, classes.marginRight5)}
+                  >
+                    <Button color="transparent">
+                      Adotar
+                    </Button>
+                  </NavLink>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                  <Button color="transparent" 
-                    children={
-                      <NavLink to="/Amica/Partner"
-                        className={
-                          classes.textHeader +
-                          " " +
-                          classes.marginRight5
-                        }
-                      >
-                        Ser Sócio
-                      </NavLink>
-                    }
-                  />
+                  <NavLink to="/Amica/Partner"
+                    className={classNames(classes.textHeader, classes.marginRight5)}
+                  >
+                    <Button color="transparent">
+                      Ser Sócio
+                    </Button>
+                  </NavLink>
                 </ListItem>
               </List>
             }
