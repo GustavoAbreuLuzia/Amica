@@ -1,13 +1,13 @@
 {
   "main.css": "/Amica/static/css/main.54eea6a0.chunk.css",
-  "main.js": "/Amica/static/js/main.609da735.chunk.js",
-  "main.js.map": "/Amica/static/js/main.609da735.chunk.js.map",
+  "main.js": "/Amica/static/js/main.382f8e68.chunk.js",
+  "main.js.map": "/Amica/static/js/main.382f8e68.chunk.js.map",
   "runtime~main.js": "/Amica/static/js/runtime~main.4c0c97fa.js",
   "runtime~main.js.map": "/Amica/static/js/runtime~main.4c0c97fa.js.map",
-  "static/js/2.bad15f00.chunk.js": "/Amica/static/js/2.bad15f00.chunk.js",
-  "static/js/2.bad15f00.chunk.js.map": "/Amica/static/js/2.bad15f00.chunk.js.map",
+  "static/js/2.5ac24502.chunk.js": "/Amica/static/js/2.5ac24502.chunk.js",
+  "static/js/2.5ac24502.chunk.js.map": "/Amica/static/js/2.5ac24502.chunk.js.map",
   "index.html": "/Amica/index.html",
-  "precache-manifest.50c2f32f5ce017c516c1cf0ee424553f.js": "/Amica/precache-manifest.50c2f32f5ce017c516c1cf0ee424553f.js",
+  "precache-manifest.2e66705d83ce1ec614d36b509226a4d4.js": "/Amica/precache-manifest.2e66705d83ce1ec614d36b509226a4d4.js",
   "service-worker.js": "/Amica/service-worker.js",
   "static/css/main.54eea6a0.chunk.css.map": "/Amica/static/css/main.54eea6a0.chunk.css.map",
   "static/media/Collie.jpg": "/Amica/static/media/Collie.e9821805.jpg",
@@ -17,6 +17,7 @@
   "static/media/Julieta.jpg": "/Amica/static/media/Julieta.ca9c2c6c.jpg",
   "static/media/Pepe.jpg": "/Amica/static/media/Pepe.5c81d7a9.jpg",
   "static/media/Sky.jpg": "/Amica/static/media/Sky.8985561d.jpg",
+  "static/media/academiaJdc.png": "/Amica/static/media/academiaJdc.1be9fbb1.png",
   "static/media/alf (1).jpg": "/Amica/static/media/alf (1).29f2c413.jpg",
   "static/media/alf (2).jpg": "/Amica/static/media/alf (2).aff8da6f.jpg",
   "static/media/alf (3).jpg": "/Amica/static/media/alf (3).5434f779.jpg",
@@ -36,6 +37,7 @@
   "static/media/header.jpg": "/Amica/static/media/header.87d8537e.jpg",
   "static/media/headerMobile.jpg": "/Amica/static/media/headerMobile.7a8c34ac.jpg",
   "static/media/logoTransparent.png": "/Amica/static/media/logoTransparent.dab20e14.png",
+  "static/media/nordeste.png": "/Amica/static/media/nordeste.2fafc032.png",
   "static/media/novavet.png": "/Amica/static/media/novavet.0beefe41.png",
   "static/media/quintaDasQueimadas.png": "/Amica/static/media/quintaDasQueimadas.c2a715b8.png",
   "static/media/senhoraPereiras.png": "/Amica/static/media/senhoraPereiras.7b1a09f2.png",
@@ -43,5 +45,6 @@
   "static/media/sky (2).jpg": "/Amica/static/media/sky (2).a4461e33.jpg",
   "static/media/tascaNoz.png": "/Amica/static/media/tascaNoz.2b838681.png",
   "static/media/vetCantarias.png": "/Amica/static/media/vetCantarias.75e1cc7a.png",
-  "static/media/vetSantiago.png": "/Amica/static/media/vetSantiago.ee1ff55b.png"
+  "static/media/vetSantiago.png": "/Amica/static/media/vetSantiago.ee1ff55b.png",
+  "static/media/visaoOrtopedica.png": "/Amica/static/media/visaoOrtopedica.43ba65e1.png"
 }
