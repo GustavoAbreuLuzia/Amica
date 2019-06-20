@@ -46,7 +46,8 @@ const headerStyle = {
     alignItems: "center",
     justifyContent: "space-between",
     display: "flex",
-    flexWrap: "nowrap"
+    flexWrap: "nowrap",
+    order: "1"
   },
   flex: {
     flex: 1
