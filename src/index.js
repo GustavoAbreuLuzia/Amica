@@ -22,13 +22,13 @@ import Adopt from "views/Adopt.jsx";
 import Partner from "views/Partner.jsx";
 
 ReactDOM.render(  
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="content">
           <Route render={({ location }) => {
             const { pathname, key } = location;
             return (
               <div>
-              <HeaderComponent home={location.pathname === "/Amica" || location.pathname === "/Amica/" ? true : false}></HeaderComponent>
+              <HeaderComponent home={location.pathname === "/" ? true : false}></HeaderComponent>
               <TransitionGroup component={null}>
                 <Transition
                   key={key}
@@ -38,10 +38,10 @@ ReactDOM.render(
                   timeout={{enter: 750, exit: 150}}
                 >
                   <Switch location={location}>
-                    <Route exact path="/Amica" component={Home}/>
-                    <Route path="/Amica/Contacts" render={(props) => <Contacts {...props}/>}/>
-                    <Route path="/Amica/Adopt" component={Adopt}/>
-                    <Route path="/Amica/Partner" component={Partner} />
+                    <Route exact path={"/"} component={Home}/>
+                    <Route path={"/Contacts"} render={(props) => <Contacts {...props}/>}/>
+                    <Route path={"/Adopt"} component={Adopt}/>
+                    <Route path={"/Partner"} component={Partner} />
                   </Switch>
                 </Transition>
                 <Transition

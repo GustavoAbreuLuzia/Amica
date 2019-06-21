@@ -108,7 +108,7 @@ class Adopt extends React.Component {
       this.setState(x);
     }
     adopt(name, history) {
-        history.push('/Amica/Contacts/' + name);
+        history.push('/Contacts/' + name);
     }
     render() {
         const { classes } = this.props;
