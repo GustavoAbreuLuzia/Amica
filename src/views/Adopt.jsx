@@ -71,9 +71,11 @@ class Adopt extends React.Component {
     componentDidMount(){
         window.scrollTo(0,0);
         window.addEventListener("resize", this.updateDimensions);
+        window.addEventListener("orientationchange", this.updateDimensions);
     }
     componentWillUnmount(){
         window.removeEventListener("resize", this.updateDimensions);
+        window.removeEventListener("orientationchange", this.updateDimensions);
     } 
     updateDimensions() {
         let columnWidth = "20%";

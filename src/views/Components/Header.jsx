@@ -17,6 +17,25 @@ import Button from "components/CustomButtons/Button.jsx";
 class HeaderComponent extends React.Component {
     constructor(props) {
       super(props);
+      this.updateDimensions = this.updateDimensions.bind(this);
+      this.state = {
+        windowSize: 1280
+      }
+    }
+    componentWillMount() {
+        this.updateDimensions();
+    }
+    componentDidMount(){
+        window.scrollTo(0,0);
+        window.addEventListener("resize", this.updateDimensions);
+        window.addEventListener("orientationchange", this.updateDimensions);
+    }
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.updateDimensions);
+        window.removeEventListener("orientationchange", this.updateDimensions);
+    } 
+    updateDimensions() {
+        this.setState({windowSize: window.innerWidth});
     }
     render() {
       const { classes, home } = this.props;
@@ -29,7 +48,7 @@ class HeaderComponent extends React.Component {
             color={home ? "transparent" : "white"}
             fixed
             changeColorOnScroll={{
-              height: 100,
+              height: this.state.windowSize > 780 ? 100 : 30,
               color: "white"
             }}
             leftLinks={

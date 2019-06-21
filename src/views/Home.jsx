@@ -54,9 +54,11 @@ class Home extends React.Component {
     componentDidMount(){
       window.scrollTo(0,0);
       window.addEventListener("resize", this.updateDimensions);
+      window.addEventListener("orientationchange", this.updateDimensions);
     }
     componentWillUnmount(){
       window.removeEventListener("resize", this.updateDimensions);
+      window.removeEventListener("orientationchange", this.updateDimensions);
     } 
     updateDimensions() {
       let columnWidth = "33.33%";
@@ -70,6 +72,7 @@ class Home extends React.Component {
       else {
         columnWidth = "100%";
       }
+      console.log(windowSize, window.innerHeight);
       this.setState({gridColumnWidth: columnWidth, windowSize: windowSize, windowHeight: window.innerHeight});
     }
     handleClickOpen(modal) {
@@ -120,21 +123,35 @@ class Home extends React.Component {
         return (
             <div>
               <Parallax filter image={this.state.windowSize > 780 ? require("../assets/img/header.jpg") : require("../assets/img/headerMobile.jpg")}>
-                <div className={classes.container}>
+                <div className={this.state.windowSize < 780 && this.state.windowHeight < 500 ? classNames(classes.containerTitleMobile, classes.container) : classes.container}>
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={6}>
-                      <h1 className={classes.title}>A felicidade tem uma forma!</h1>
-                      <h4>
-                        São tantos os animais que necessitam de apoio no Distrito de Bragança. A
-                        nossa organização sem fins lucrativos, tem como objetivo promover o Bem Estar dos Animais e dar voz aos seus direitos,
-                        em especial aos cães, animais que conseguem sob quaisquer circuntâncias
-                        alegrar o ambiente familiar.
-                      </h4>
+                      {
+                        this.state.windowSize < 780 && this.state.windowHeight < 500 ?
+                        <div>
+                          <h3 className={classes.title}>A felicidade tem uma forma!</h3>
+                          <h5>
+                            São tantos os animais que necessitam de apoio no Distrito de Bragança. A
+                            nossa organização sem fins lucrativos, tem como objetivo promover o Bem Estar dos Animais e dar voz aos seus direitos,
+                            em especial aos cães, animais que conseguem sob quaisquer circuntâncias
+                            alegrar o ambiente familiar.
+                          </h5>
+                        </div> :
+                        <div>
+                          <h1 className={classes.title}>A felicidade tem uma forma!</h1>
+                          <h4>
+                            São tantos os animais que necessitam de apoio no Distrito de Bragança. A
+                            nossa organização sem fins lucrativos, tem como objetivo promover o Bem Estar dos Animais e dar voz aos seus direitos,
+                            em especial aos cães, animais que conseguem sob quaisquer circuntâncias
+                            alegrar o ambiente familiar.
+                          </h4>
+                        </div>
+                      }
                     </GridItem>
                   </GridContainer>
                 </div>
               </Parallax>
-              <div className={this.state.windowHeight > 500 ? classNames(classes.main, classes.mainRaised) : classNames(classes.main, classes.mainRaisedMobileHor)}>
+              <div className={this.state.windowHeight > 500 ? (this.state.windowSize > 780 ? classNames(classes.main, classes.mainRaised) : classNames(classes.main, classes.mainRaisedMobileVer)) : classNames(classes.main, classes.mainRaisedMobileVer)}>
                 <div className={classes.container}>
                   <div className={classes.section}>
                     <GridContainer justify="center">
