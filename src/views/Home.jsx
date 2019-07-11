@@ -52,7 +52,7 @@ class Home extends React.Component {
       this.updateDimensions();
     }
     componentDidMount(){
-      window.scrollTo(0,0);
+      //window.scrollTo(0,0);
       window.addEventListener("resize", this.updateDimensions);
       window.addEventListener("orientationchange", this.updateDimensions);
     }
