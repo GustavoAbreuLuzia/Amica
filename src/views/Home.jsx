@@ -72,7 +72,6 @@ class Home extends React.Component {
       else {
         columnWidth = "100%";
       }
-      console.log(windowSize, window.innerHeight);
       this.setState({gridColumnWidth: columnWidth, windowSize: windowSize, windowHeight: window.innerHeight});
     }
     handleClickOpen(modal) {

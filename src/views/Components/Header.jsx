@@ -48,7 +48,7 @@ class HeaderComponent extends React.Component {
             color={home ? "transparent" : "white"}
             fixed
             changeColorOnScroll={{
-              height: this.state.windowSize > 780 ? 100 : 30,
+              height: this.state.windowSize > 780 ? 100 : 20,
               color: "white"
             }}
             leftLinks={

@@ -57,7 +57,7 @@ class CustomTabs extends React.Component {
               indicator: classes.displayNone
             }}
             variant="scrollable"
-            scrollButtons="auto"
+            scrollButtons="on"
           >
             {tabs.map((prop, key) => {
               var icon = {};
