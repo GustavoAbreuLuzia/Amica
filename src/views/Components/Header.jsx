@@ -19,7 +19,8 @@ class HeaderComponent extends React.Component {
       super(props);
       this.updateDimensions = this.updateDimensions.bind(this);
       this.state = {
-        windowSize: 1280
+        windowSize: 1280,
+        home: false
       }
     }
     componentWillMount() {
@@ -39,9 +40,12 @@ class HeaderComponent extends React.Component {
     }
     render() {
       const { classes, home } = this.props;
-      if(home){
+      if(home && !this.state.home){
         window.scrollTo(0,0);
       }      
+      if (home !== this.state.home){
+        this.setState({home: home});
+      }
       return (            
         <div>
           <Header

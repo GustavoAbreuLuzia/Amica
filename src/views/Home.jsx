@@ -1,5 +1,8 @@
 import React from "react";
 
+// Api
+import api from "../Utils/api";
+
 //Style
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -24,6 +27,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
+import ListNews from 'views/Components/ListNews.jsx';
 
 //Images
 import caoEncontrado from "assets/img/caoEncontrado.jpg"
@@ -45,16 +49,25 @@ class Home extends React.Component {
         refreshPage: false,
         gridColumnWidth: "33.33%",
         windowSize: 1280,
-        windowHeight: 800
+        windowHeight: 800,
+        listNews: null
       };
     }
     componentWillMount() {
       this.updateDimensions();
     }
-    componentDidMount(){
-      //window.scrollTo(0,0);
+    async componentDidMount(){
+      window.scrollTo(0,0);
       window.addEventListener("resize", this.updateDimensions);
       window.addEventListener("orientationchange", this.updateDimensions);
+
+      const news = await api.get('/News', {
+        params: {
+          quantity: 15
+        }
+      });
+
+      this.setState({listNews: news.data});
     }
     componentWillUnmount(){
       window.removeEventListener("resize", this.updateDimensions);
@@ -83,6 +96,9 @@ class Home extends React.Component {
       var x = [];
       x[modal] = false;
       this.setState(x);
+    }
+    newsDetailed(id, history) {
+      history.push('/News/' + id);
     }
     setLayout() {
       if (this.grid !== undefined) {
@@ -158,6 +174,11 @@ class Home extends React.Component {
                         <h2 className={this.state.windowHeight > 500 ? classNames(classes.titleWrning, classes.title) : classNames(classes.titleWrning, classes.titleMobile)}>Vamos falar sobre os animais?</h2>
                       </GridItem>
                     </GridContainer>
+                    {
+                      this.state.listNews !== null ?
+                      <ListNews News={this.state.listNews} columnWidth={this.state.gridColumnWidth} classes={classes} windowSize={this.state.windowSize}></ListNews>
+                      : ""
+                    }
                     <StackGrid gridRef={grid => this.grid = grid} onLayout={this.setLayout()} columnWidth={this.state.gridColumnWidth}>
                       <GridItem id={"xxx"} hasImage={false} xs>
                         <InfoArea
@@ -166,7 +187,7 @@ class Home extends React.Component {
                           O jornal <a className={classes.hoverUnderline} href="https://www.facebook.com/Publico">Público</a> destaca a campanha e nós os nossos “atores”! 
                           Nunca é demais relembrar: não abandone ou maltrate os animais. <br/> <a className={classes.hoverUnderline} style={{float: "right"}} target={"_blank"} href="https://www.publico.pt/2019/05/14/p3/video/uma-campanha-contra-o-abandono-de-animais-porque-ele-nunca-te-vai-esquecer-20190514-122859">Veja a notícia completa.</a></span>}
                           icon={Info}
-                          iconColor="danger"
+                          iconColor="danger"  
                           vertical={false}
                           //classGrid={this.state.classGrid[0]} Fazer verificação por quantidade de letras´
                           // quando não tiver imagem
