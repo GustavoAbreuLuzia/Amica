@@ -112,6 +112,9 @@ function CustomInput({ ...props }) {
           }}
           id={id}
           {...inputProps}
+          inputProps={{
+            maxLength: inputProps.maxlength // MaxLength do not work directly on {...inputProps}
+          }}       
         />}
       </FormControl>
     </ThemeProvider>

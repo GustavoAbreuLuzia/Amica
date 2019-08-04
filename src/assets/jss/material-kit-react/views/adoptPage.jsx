@@ -64,7 +64,7 @@ const adoptPage = {
         "&:hover": {
           backgroundColor: "#FF9800 !Important"
         }
-    },
+    },    
     ...imagesStyles,
     ...modalStyle
 }

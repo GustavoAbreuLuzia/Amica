@@ -20,6 +20,7 @@ import Home from "views/Home.jsx";
 import Contacts from "views/Contacts.jsx";
 import Adopt from "views/Adopt.jsx";
 import Partner from "views/Partner.jsx";
+import News from "views/News.jsx";
 
 ReactDOM.render(  
       <BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -42,6 +43,7 @@ ReactDOM.render(
                     <Route path={"/Contacts"} render={(props) => <Contacts {...props}/>}/>
                     <Route path={"/Adopt"} component={Adopt}/>
                     <Route path={"/Partner"} component={Partner} />
+                    <Route path={"/News/:id"} component={News} />
                   </Switch>
                 </Transition>
                 <Transition
