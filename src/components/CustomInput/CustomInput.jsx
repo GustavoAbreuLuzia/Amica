@@ -112,11 +112,11 @@ function CustomInput({ ...props }) {
           }}
           id={id}
           {...inputProps}
-          inputProps={{
+          inputProps={inputProps !== undefined && inputProps.maxlength !== undefined ? {
             maxLength: inputProps.maxlength // MaxLength do not work directly on {...inputProps}
-          }}       
+          } : {}}       
         />}
-      </FormControl>
+      </FormControl> 
     </ThemeProvider>
   );
 }
