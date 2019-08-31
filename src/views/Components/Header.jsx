@@ -47,6 +47,7 @@ class HeaderComponent extends React.Component {
         this.setState({home: home});
       }
       return (            
+        this.props.admin ? null :
         <div>
           <Header
             color={home ? "transparent" : "white"}
@@ -59,6 +60,7 @@ class HeaderComponent extends React.Component {
               <List className={classes.list}>
                 <ListItem className={classes.listItem}>
                   <NavLink to={"/"}
+                    onClick={() => window.scrollTo(0,0)}
                     className={
                       classes.warningText + " " + 
                       classes.marginRight5 +

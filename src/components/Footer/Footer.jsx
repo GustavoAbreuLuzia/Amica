@@ -6,9 +6,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { List, ListItem, withStyles } from "@material-ui/core";
 
-// @material-ui/icons
-import Favorite from "@material-ui/icons/Favorite";
-
 import footerStyle from "assets/jss/material-kit-react/components/footerStyle.jsx";
 
 function Footer({ ...props }) {
@@ -22,6 +19,7 @@ function Footer({ ...props }) {
     [classes.footerWhiteFont]: whiteFont
   });
   return (
+    props.admin ? null :
     <footer className={footerClasses}>
       <div className={classes.container}>
         <div className={classes.left}>
