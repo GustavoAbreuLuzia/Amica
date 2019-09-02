@@ -18,6 +18,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 //Components
 import HeaderAdmin from "views/Components/HeaderAdmin";
+import Protected from "views/Components/Protected";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import MaterialTable from "material-table";
@@ -73,33 +74,36 @@ class AdminContainer extends React.Component {
         const windowSizeDesktop = this.state.windowSize > 780;
         const windowHeightDesktop = this.state.windowHeight > 500;
         return (  
-          <div>
-            <HeaderAdmin />
-            <div className={classNames(classes.main, classes.mainRaised)}>
-              <GridContainer>
-                <MaterialTable
-                  title="Notícias"
-                  columns={[
-                    { title: 'Título', field: 'title' },
-                    { title: 'Descrição', field: 'description' }
-                  ]}
-                  data={this.state.listNews}        
-                  actions={[
-                    {
-                      icon: 'edit',
-                      tooltip: 'Editar',
-                      onClick: (event, rowData) => alert("You saved " + rowData.title)
-                    }
-                  ]}
-                  localization={{
-                    header: {
-                      actions: "Ações"
-                    }
-                  }}
-                />
-              </GridContainer>
+          <Protected currentPage={
+            <div>
+              <HeaderAdmin />
+              <div className={classNames(classes.main, classes.mainRaised)}>
+                <GridContainer>
+                  <MaterialTable
+                    title="Notícias"
+                    columns={[
+                      { title: 'Título', field: 'title' },
+                      { title: 'Descrição', field: 'description' }
+                    ]}
+                    data={this.state.listNews}        
+                    actions={[
+                      {
+                        icon: 'edit',
+                        tooltip: 'Editar',
+                        onClick: (event, rowData) => alert("You saved " + rowData.title)
+                      }
+                    ]}
+                    localization={{
+                      header: {
+                        actions: "Ações"
+                      }
+                    }}
+                  />
+                </GridContainer>
+              </div>
             </div>
-          </div>
+          }
+          />
         )
     }
 }

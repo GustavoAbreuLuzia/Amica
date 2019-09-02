@@ -26,19 +26,23 @@ export const play = (pathname, node, appears) => {
   const delay = 0;
   let timeline;
   
-  if (pathname === '/')
-    timeline = getHomeTimeline(node, delay);
-  else
-    timeline = getDefaultTimeline(node, delay);
-    
-  window
-    .loadPromise
-    .then(() => requestAnimationFrame(() => timeline.play()))
+  if(node !== null){
+    if (pathname === '/')
+      timeline = getHomeTimeline(node, delay);
+    else
+      timeline = getDefaultTimeline(node, delay);
+      
+    window
+      .loadPromise
+      .then(() => requestAnimationFrame(() => timeline.play()))
+  }  
 }
 
 export const exit = (node) => {
-  const timeline = new Timeline({ paused: true });
+  if(node !== null){
+    const timeline = new Timeline({ paused: true });
 
-  timeline.to(node, 0.35, { autoAlpha: 0, ease: Power1.easeOut });
-  timeline.play();
+    timeline.to(node, 0.35, { autoAlpha: 0, ease: Power1.easeOut });
+    timeline.play();
+  }  
 }

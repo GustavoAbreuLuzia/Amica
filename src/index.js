@@ -51,6 +51,7 @@ ReactDOM.render(
                     </Switch>
                   </Transition>
                 </TransitionGroup>
+                
                 <Footer admin={pathname.indexOf("Admin") >= 0} /> 
               </div>
             )
