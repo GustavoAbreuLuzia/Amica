@@ -6,47 +6,29 @@ import api from "../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import ContactsStyle from "assets/jss/material-kit-react/views/Contacts.jsx";
-
-//Icons
-import Person from "@material-ui/icons/Person";
-import Mail from "@material-ui/icons/Mail";
-import Phone from "@material-ui/icons/Phone";
-import Subject from "@material-ui/icons/Subject";
-import CatDog from "assets/img/catDog.svg";
-import CloseIcon from '@material-ui/icons/Close';
+import AdminContainerStyle from "assets/jss/material-kit-react/views/AdminContainer.jsx";
 
 //Components
 import HeaderAdmin from "views/Components/HeaderAdmin";
 import Protected from "views/Components/Protected";
 import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import MaterialTable from "material-table";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Info from "components/Typography/Info.jsx";
-import Muted from "components/Typography/Muted.jsx";
-import Button from 'components/CustomButtons/Button.jsx';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
+import AdminNews from "views/Components/AdminNews";
+import AdminContacts from "views/Components/AdminContacts";
+import AdminAdopt from "views/Components/AdminAdopt";
+import AdminPartner from "views/Components/AdminPartner";
+import AdminCompany from "views/Components/AdminCompany";
 
 class AdminContainer extends React.Component {
     constructor(props) {
-      super(props);
-      this.updateDimensions = this.updateDimensions.bind(this);     
+      super(props);    
       this.state = {
-        windowSize: 1280,
-        windowHeight: 800,
-        listNews: []
+        listNews: [],
+        currentPage: "News"
       };
-    }
-    componentWillMount() {
-      this.updateDimensions();
+      this.changeCurrentPage = this.changeCurrentPage.bind(this);
     }
     async componentDidMount(){
       window.scrollTo(0,0);
-      window.addEventListener("resize", this.updateDimensions);
-      window.addEventListener("orientationchange", this.updateDimensions);
 
       const news = await api.get('/News', {
         params: {
@@ -56,49 +38,41 @@ class AdminContainer extends React.Component {
 
       this.setState({listNews: news.data});
     }
-    componentWillUnmount(){
-      window.removeEventListener("resize", this.updateDimensions);
-      window.removeEventListener("orientationchange", this.updateDimensions);
-    } 
-    updateDimensions() {
-      if(window.innerWidth !== this.state.windowSize){
-        this.setState({windowSize:  window.innerWidth});
+    currentPage(){
+      const currentPage = this.state.currentPage;
+      
+      if (currentPage === "News"){
+        return <AdminNews/>;
+      }
+      else if (currentPage === "Contacts") {
+        return <AdminContacts/>;
+      }
+      else if (currentPage === "Adopt") {
+        return <AdminAdopt/>
+      }
+      else if (currentPage === "Partners") {
+        return <AdminPartner/>
+      }
+      else if (currentPage === "Company") {
+        return <AdminCompany/>;
       }
 
-      if(window.innerHeight !== this.state.windowHeight){
-        this.setState({windowHeight: window.innerHeight});
-      }
+      return <div/>;
+    }
+    changeCurrentPage(newPage) {
+      if(this.state.currentPage !== newPage) {
+        this.setState({currentPage: newPage});
+      }      
     }
     render() {
         const { classes } = this.props;
-        const windowSizeDesktop = this.state.windowSize > 780;
-        const windowHeightDesktop = this.state.windowHeight > 500;
         return (  
           <Protected currentPage={
-            <div>
-              <HeaderAdmin />
+            <div className={classes.bottom}>
+              <HeaderAdmin changePage={this.changeCurrentPage} />
               <div className={classNames(classes.main, classes.mainRaised)}>
                 <GridContainer>
-                  <MaterialTable
-                    title="Notícias"
-                    columns={[
-                      { title: 'Título', field: 'title' },
-                      { title: 'Descrição', field: 'description' }
-                    ]}
-                    data={this.state.listNews}        
-                    actions={[
-                      {
-                        icon: 'edit',
-                        tooltip: 'Editar',
-                        onClick: (event, rowData) => alert("You saved " + rowData.title)
-                      }
-                    ]}
-                    localization={{
-                      header: {
-                        actions: "Ações"
-                      }
-                    }}
-                  />
+                  {this.currentPage()}
                 </GridContainer>
               </div>
             </div>
@@ -108,4 +82,4 @@ class AdminContainer extends React.Component {
     }
 }
 
-export default withStyles(ContactsStyle)(AdminContainer);
+export default withStyles(AdminContainerStyle)(AdminContainer);

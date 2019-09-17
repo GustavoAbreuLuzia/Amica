@@ -1,7 +1,12 @@
 import React from "react";
 
+// Api
+import api from "../../Utils/api";
+
+// Route
+import { Route } from "react-router-dom"; 
+
 //Styles
-import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 import headerAdminStyle from "assets/jss/material-kit-react/views/landingPageSections/HeaderAdmin.jsx";
 
@@ -16,7 +21,8 @@ class HeaderAdmin extends React.Component {
       super(props);
       this.updateDimensions = this.updateDimensions.bind(this);
       this.state = {
-        windowSize: 1280
+        windowSize: 1280,
+        changePage: props.changePage
       }
     }
     componentWillMount() {
@@ -34,6 +40,13 @@ class HeaderAdmin extends React.Component {
     updateDimensions() {
         this.setState({windowSize: window.innerWidth});
     }
+    changePage(page){
+      this.state.changePage(page);
+    }
+    async logOut(history) {
+      await api.delete('/usersAdmin/login/logout');
+      history.push('/');
+    }
     render() {
       const { classes } = this.props;
       return (  
@@ -45,26 +58,31 @@ class HeaderAdmin extends React.Component {
               <ListItem className={classes.listItem}>                  
                 <Button
                   color="transparent"
+                  onClick={() => this.changePage("News")}
                 >
                   Notícias                    
                 </Button>
                 <Button
                   color="transparent"
+                  onClick={() => this.changePage("Contacts")}
                 >
                   Contatos                    
                 </Button>                 
                 <Button
                   color="transparent"
+                  onClick={() => this.changePage("Adopt")}
                 >
                   Adoções
                 </Button>                 
                 <Button
                   color="transparent"
+                  onClick={() => this.changePage("Partners")}
                 >
                   Sócios
                 </Button>                 
                 <Button
                   color="transparent"
+                  onClick={() => this.changePage("Company")}
                 >
                   Parceiros
                 </Button>
@@ -74,9 +92,14 @@ class HeaderAdmin extends React.Component {
           rightLinks={
             <List className={classes.list}>
               <ListItem className={classes.listItem}>
-                <Button color="transparent">
-                    LogOut
-                </Button>
+                <Route render={({ history }) => (
+                  <Button 
+                    color="transparent"
+                    onClick={() => this.logOut(history)}
+                  >
+                      LogOut
+                  </Button>
+                )} />
               </ListItem>
             </List>
           }
