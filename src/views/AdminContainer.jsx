@@ -17,13 +17,16 @@ import AdminContacts from "views/Components/AdminContacts";
 import AdminAdopt from "views/Components/AdminAdopt";
 import AdminPartner from "views/Components/AdminPartner";
 import AdminCompany from "views/Components/AdminCompany";
+import AdminNewsDetails from "views/Components/AdminNewsDetails";
+import AdminAdoptDetails from "views/Components/AdminAdoptDetails";
 
 class AdminContainer extends React.Component {
     constructor(props) {
       super(props);    
       this.state = {
         listNews: [],
-        currentPage: "News"
+        currentPage: "News",
+        dataObject: undefined
       };
       this.changeCurrentPage = this.changeCurrentPage.bind(this);
     }
@@ -42,26 +45,35 @@ class AdminContainer extends React.Component {
       const currentPage = this.state.currentPage;
       
       if (currentPage === "News"){
-        return <AdminNews/>;
+        return <AdminNews changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Contacts") {
         return <AdminContacts/>;
       }
       else if (currentPage === "Adopt") {
-        return <AdminAdopt/>
+        return <AdminAdopt changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Partners") {
-        return <AdminPartner/>
+        return <AdminPartner changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Company") {
-        return <AdminCompany/>;
+        return <AdminCompany changeCurrentPage={this.changeCurrentPage}/>;
+      }
+      else if (currentPage === "NewsDetail") {
+        return <AdminNewsDetails dataObject={this.state.dataObject}/>;
+      }
+      else if (currentPage === "AdoptDetail") {
+        return <AdminAdoptDetails dataObject={this.state.dataObject}/>;
       }
 
       return <div/>;
     }
-    changeCurrentPage(newPage) {
+    changeCurrentPage(newPage, newDataObject) {
       if(this.state.currentPage !== newPage) {
         this.setState({currentPage: newPage});
+      }      
+      if(this.state.dataObject !== newDataObject) {
+        this.setState({dataObject: newDataObject});
       }      
     }
     render() {

@@ -74,12 +74,12 @@ class HeaderAdmin extends React.Component {
                 >
                   Adoções
                 </Button>                 
-                <Button
+                {/* <Button
                   color="transparent"
                   onClick={() => this.changePage("Partners")}
                 >
                   Sócios
-                </Button>                 
+                </Button>                  */}
                 <Button
                   color="transparent"
                   onClick={() => this.changePage("Company")}
