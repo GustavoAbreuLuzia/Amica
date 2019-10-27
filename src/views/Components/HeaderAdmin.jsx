@@ -85,6 +85,12 @@ class HeaderAdmin extends React.Component {
                   onClick={() => this.changePage("Company")}
                 >
                   Parceiros
+                </Button>                 
+                <Button
+                  color="transparent"
+                  onClick={() => this.changePage("Users")}
+                >
+                  Usuários
                 </Button>
               </ListItem>
             </List>

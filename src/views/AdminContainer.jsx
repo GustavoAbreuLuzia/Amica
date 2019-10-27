@@ -17,8 +17,11 @@ import AdminContacts from "views/Components/AdminContacts";
 import AdminAdopt from "views/Components/AdminAdopt";
 import AdminPartner from "views/Components/AdminPartner";
 import AdminCompany from "views/Components/AdminCompany";
+import AdminUsers from "views/Components/AdminUsers";
 import AdminNewsDetails from "views/Components/AdminNewsDetails";
 import AdminAdoptDetails from "views/Components/AdminAdoptDetails";
+import AdminCompanyDetails from "views/Components/AdminCompanyDetails";
+import AdminUsersDetails from "views/Components/AdminUsersDetails";
 
 class AdminContainer extends React.Component {
     constructor(props) {
@@ -59,11 +62,20 @@ class AdminContainer extends React.Component {
       else if (currentPage === "Company") {
         return <AdminCompany changeCurrentPage={this.changeCurrentPage}/>;
       }
+      else if (currentPage === "Users") {
+        return <AdminUsers changeCurrentPage={this.changeCurrentPage}/>;
+      }
       else if (currentPage === "NewsDetail") {
         return <AdminNewsDetails dataObject={this.state.dataObject}/>;
       }
       else if (currentPage === "AdoptDetail") {
         return <AdminAdoptDetails dataObject={this.state.dataObject}/>;
+      }
+      else if (currentPage === "CompanyDetail"){
+        return <AdminCompanyDetails dataObject={this.state.dataObject}/>;
+      }
+      else if (currentPage === "UsersDetail"){
+        return <AdminUsersDetails dataObject={this.state.dataObject}/>;
       }
 
       return <div/>;

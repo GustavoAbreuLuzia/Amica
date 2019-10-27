@@ -61,7 +61,7 @@ class AdminAdopt extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div style={{width: "100%"}}>
                 <MaterialTable
                     style={{ padding: "10px 30px", width: "100%" }}
                     title="Adotar"

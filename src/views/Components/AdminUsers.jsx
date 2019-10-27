@@ -11,52 +11,48 @@ import MaterialTable from "material-table";
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
-class AdminCompany extends React.Component {
+class AdminUsers extends React.Component {
     constructor(props) {
         super(props);
-        this.handleCloseCompanyMessageSuccess = this.handleCloseCompanyMessageSuccess.bind(this);  
-        this.handleCloseCompanyMessageFailure = this.handleCloseCompanyMessageFailure.bind(this);  
+        this.handleCloseUsersMessageSuccess = this.handleCloseUsersMessageSuccess.bind(this);  
+        this.handleCloseUsersMessageFailure = this.handleCloseUsersMessageFailure.bind(this);  
         this.state = {
-            listCompany: [],
-            showCompanySuccess: false,
-            showCompanyFailure: false
+            listUsers: [],
+            showUsersSuccess: false,
+            showUsersFailure: false
           };
     }
     async componentDidMount(){
-        const companies = await api.get('/Company', {
-          params: {
-            quantity: 100
-          }
-        });
+        const Users = await api.get('/usersAdmin');
   
-        this.setState({listCompany: companies.data});
+        this.setState({listUsers: Users.data});
     }
-    createCompany() {
-        this.props.changeCurrentPage("CompanyDetail");
+    createUsers() {
+        this.props.changeCurrentPage("UsersDetail");
     }
-    async deleteCompany(id) {
+    async deleteUsers(id) {
         const _this = this;
-        const Company = await api.put(`/Company/${id}`, { status: false })
+        const Users = await api.put(`/usersAdmin/${id}`, { status: false })
         .then(() => {
-            const listCompanyUpdated = _this.state.listCompany.filter((Company) => {
-                return Company._id !== id;
+            const listUsersUpdated = _this.state.listUsers.filter((Users) => {
+                return Users._id !== id;
             });
             
-            this.setState({listCompany: listCompanyUpdated})
-            _this.setState({showCompanySuccess: true});
+            this.setState({listUsers: listUsersUpdated})
+            _this.setState({showUsersSuccess: true});
         })
         .catch(() => {
-            _this.setState({showCompanySuccess: true});
+            _this.setState({showUsersSuccess: true});
         })
     }
-    handleCloseCompanyMessageSuccess(){
-        if(this.state.showCompanySuccess){
-            this.setState({showCompanySuccess: false});
+    handleCloseUsersMessageSuccess(){
+        if(this.state.showUsersSuccess){
+            this.setState({showUsersSuccess: false});
         }
     }
-    handleCloseCompanyMessageFailure(){
-        if(this.state.showCompanyFailure){
-            this.setState({showCompanyFailure: false});
+    handleCloseUsersMessageFailure(){
+        if(this.state.showUsersFailure){
+            this.setState({showUsersFailure: false});
         }
     }
     render() {
@@ -64,54 +60,54 @@ class AdminCompany extends React.Component {
             <div style={{width: "100%"}}>
                 <MaterialTable
                     style={{ padding: "10px 30px", width: "100%" }}
-                    title="Empresas Parceiras"
+                    title="Usuários"
                     columns={[
                         { title: 'Nome', field: 'name' },
-                        { title: 'Descrição', field: 'description' }
+                        { title: 'Usuário', field: 'userLogin' }
                     ]}
-                    data={this.state.listCompany}        
+                    data={this.state.listUsers}        
                     actions={[
                     {
                         icon: 'edit',
                         tooltip: 'Editar',
-                        onClick: (event, rowData) => this.props.changeCurrentPage("CompanyDetail", rowData)
+                        onClick: (event, rowData) => this.props.changeCurrentPage("UsersDetail", rowData)
                     },
                     {
                         icon: 'delete',
                         tooltip: 'Deletar',
-                        onClick: (event, rowData) => this.deleteCompany(rowData._id)
+                        onClick: (event, rowData) => this.deleteUsers(rowData._id)
                     },
                     {
                         icon: 'add',
-                        tooltip: 'Criar Parceiro',
+                        tooltip: 'Criar Notícia',
                         isFreeAction: true,
-                        onClick: (event) => this.createCompany()
+                        onClick: (event) => this.createUsers()
                     }
                     ]}
                     localization={{
                         header: {
                             actions: "Ações"
                         }
-                    }}
+                    }}                
                 />
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
                         horizontal: 'left',
                     }}
-                    open={this.state.showCompanySuccess}
+                    open={this.state.showUsersSuccess}
                     autoHideDuration={6000}
-                    onClose={this.handleCloseCompanyMessageSuccess}
+                    onClose={this.handleCloseUsersMessageSuccess}
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">Parceiro deletado com sucesso!</span>}
+                    message={<span id="message-id">Usuário deletado com sucesso!</span>}
                     action={[
                         <IconButton
                         key="close"
                         aria-label="close"
                         color="inherit"
-                        onClick={this.handleCloseCompanyMessageSuccess}
+                        onClick={this.handleCloseUsersMessageSuccess}
                         >
                         <CloseIcon />
                         </IconButton>,
@@ -122,19 +118,19 @@ class AdminCompany extends React.Component {
                         vertical: 'bottom',
                         horizontal: 'left',
                     }}
-                    open={this.state.showCompanyFailure}
+                    open={this.state.showUsersFailure}
                     autoHideDuration={6000}
-                    onClose={this.handleCloseCompanyMessageFailure}
+                    onClose={this.handleCloseUsersMessageFailure}
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">Houve um erro ao deletar o parceiro, tente novamente mais tarde.</span>}
+                    message={<span id="message-id">Houve um erro ao deletar o usuário, tente novamente mais tarde.</span>}
                     action={[
                         <IconButton
                         key="close"
                         aria-label="close"
                         color="inherit"
-                        onClick={this.handleCloseCompanyMessageFailure}
+                        onClick={this.handleCloseUsersMessageFailure}
                         >
                         <CloseIcon />
                         </IconButton>,
@@ -145,4 +141,4 @@ class AdminCompany extends React.Component {
     }
 }
 
-export default AdminCompany;
+export default AdminUsers;
