@@ -22,7 +22,7 @@ class ProtectedComponent extends React.Component {
   }
   async checkProtectedArea(){
     const _this = this;
-    const response = await api.get('/usersAdmin/login/check')
+    const response = await api.get('/api/usersAdmin/login/check')
     .then((responseLogin) => {
       _this.setState({loginChecked: responseLogin.data.auth})
     })

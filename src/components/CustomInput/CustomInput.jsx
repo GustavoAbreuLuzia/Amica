@@ -12,9 +12,9 @@ import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { primaryColor } from "assets/jss/material-kit-react.jsx";
+import { primaryColor } from "../../assets/jss/material-kit-react.jsx";
 
-import customInputStyle from "assets/jss/material-kit-react/components/customInputStyle.jsx";
+import customInputStyle from "../../assets/jss/material-kit-react/components/customInputStyle.jsx";
 
 function CustomInput({ ...props }) {
   const {

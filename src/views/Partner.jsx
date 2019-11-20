@@ -6,16 +6,16 @@ import api from "../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import PartnersStyle from "assets/jss/material-kit-react/views/Partners.jsx";
+import PartnersStyle from "../assets/jss/material-kit-react/views/Partners.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Button from 'components/CustomButtons/Button.jsx';
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import GridItem from "../components/Grid/GridItem.jsx";
+import CustomInput from "../components/CustomInput/CustomInput.jsx";
+import Button from '../components/CustomButtons/Button.jsx';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import ListCompany from 'views/Components/ListCompany.jsx';
+import ListCompany from "../views/Components/ListCompany.jsx";
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -63,7 +63,7 @@ class Partners extends React.Component {
       window.addEventListener("resize", this.updateDimensions);
       window.addEventListener("orientationchange", this.updateDimensions);
 
-      const companies = await api.get('/company', {
+      const companies = await api.get('/api/company', {
         params: {
           quantity: 50
         }
@@ -174,7 +174,7 @@ class Partners extends React.Component {
 
         if(fullFilled){
             const _this = this;
-            const mail = await api.post('/partner', {
+            const mail = await api.post('/api/partner', {
                 name: this.state.name,
                 document: this.state.document,
                 birthday: this.state.date,

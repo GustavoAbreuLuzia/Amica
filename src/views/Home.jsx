@@ -6,13 +6,13 @@ import api from "../Utils/api";
 //Style
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
+import landingPageStyle from "../assets/jss/material-kit-react/views/landingPage.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
-import ListNews from 'views/Components/ListNews.jsx';
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import GridItem from "../components/Grid/GridItem.jsx";
+import Parallax from "../components/Parallax/Parallax.jsx";
+import ListNews from "../views/Components/ListNews.jsx";
 
 class Home extends React.Component {
     constructor(props) {
@@ -34,7 +34,7 @@ class Home extends React.Component {
       window.addEventListener("resize", this.updateDimensions);
       window.addEventListener("orientationchange", this.updateDimensions);
 
-      const news = await api.get('/News', {
+      const news = await api.get('/api/News', {
         params: {
           quantity: 15
         }

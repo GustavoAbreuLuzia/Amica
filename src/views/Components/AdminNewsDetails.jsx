@@ -6,14 +6,14 @@ import api from "../../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AdminNewsDetailsStyle from "assets/jss/material-kit-react/views/AdminNewsDetails.jsx";
+import AdminNewsDetailsStyle from "../../assets/jss/material-kit-react/views/AdminNewsDetails.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Card from "components/Card/Card.jsx";    
-import Button from 'components/CustomButtons/Button.jsx';
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
+import CustomInput from "../../components/CustomInput/CustomInput.jsx";
+import Card from "../../components/Card/Card.jsx";    
+import Button from '../../components/CustomButtons/Button.jsx';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -73,7 +73,7 @@ class AdminNewsDetails extends React.Component {
                     'content-type': 'multipart/form-data'
                 }
             };
-            const newsImageUpload = await api.post('/news/admin/upload', formData, config);
+            const newsImageUpload = await api.post('/api/news/admin/upload', formData, config);
             let imagesUpdated = this.state.images;  
             imagesUpdated.push('images/news/' + newsImageUpload.data.filename);
             this.setState({images: imagesUpdated})
@@ -112,7 +112,7 @@ class AdminNewsDetails extends React.Component {
             
             if(this.state.id === null){
                 // Insert
-                const newsInserted = await api.post('/news', news)                
+                const newsInserted = await api.post('/api/news', news)                
                 .then((item) => {
                     _this.setState({id: item.data._id, showNewsSuccess: true});
                 })
@@ -124,7 +124,7 @@ class AdminNewsDetails extends React.Component {
                 // Update
                 news._id = this.state.id;
 
-                const newsUpdated = await api.put(`/news/${this.state.id}`, news)                
+                const newsUpdated = await api.put(`/api/news/${this.state.id}`, news)                
                 .then(() => {
                     _this.setState({showNewsSuccess: true});
                 })

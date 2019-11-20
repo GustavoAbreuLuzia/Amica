@@ -23,7 +23,7 @@ class AdminCompany extends React.Component {
           };
     }
     async componentDidMount(){
-        const companies = await api.get('/Company', {
+        const companies = await api.get('/api/Company', {
           params: {
             quantity: 100
           }
@@ -36,7 +36,7 @@ class AdminCompany extends React.Component {
     }
     async deleteCompany(id) {
         const _this = this;
-        const Company = await api.put(`/Company/${id}`, { status: false })
+        const Company = await api.put(`/api/Company/${id}`, { status: false })
         .then(() => {
             const listCompanyUpdated = _this.state.listCompany.filter((Company) => {
                 return Company._id !== id;

@@ -6,14 +6,14 @@ import api from "../../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AdminAdoptDetailsStyle from "assets/jss/material-kit-react/views/AdminAdoptDetails.jsx";
+import AdminAdoptDetailsStyle from "../../assets/jss/material-kit-react/views/AdminAdoptDetails.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Card from "components/Card/Card.jsx";    
-import Button from 'components/CustomButtons/Button.jsx';
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
+import CustomInput from "../../components/CustomInput/CustomInput.jsx";
+import Card from "../../components/Card/Card.jsx";    
+import Button from '../../components/CustomButtons/Button.jsx';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -89,7 +89,7 @@ class AdminAdoptDetails extends React.Component {
                     'content-type': 'multipart/form-data'
                 }
             };
-            const adoptImageUpload = await api.post('/adopt/admin/upload', formData, config);
+            const adoptImageUpload = await api.post('/api/adopt/admin/upload', formData, config);
             let imagesUpdated = this.state.images;  
             imagesUpdated.push('images/adopt/' + adoptImageUpload.data.filename);
             this.setState({images: imagesUpdated})
@@ -128,7 +128,7 @@ class AdminAdoptDetails extends React.Component {
             
             if(this.state.id === null){
                 // Insert
-                const adoptInserted = await api.post('/adopt', adopt)                
+                const adoptInserted = await api.post('/api/adopt', adopt)                
                 .then((item) => {
                     _this.setState({id: item.data._id, showAdoptSuccess: true});
                 })
@@ -140,7 +140,7 @@ class AdminAdoptDetails extends React.Component {
                 // Update
                 adopt._id = this.state.id;
 
-                const adoptUpdated = await api.put(`/adopt/${this.state.id}`, adopt)                
+                const adoptUpdated = await api.put(`/api/adopt/${this.state.id}`, adopt)                
                 .then(() => {
                     _this.setState({showAdoptSuccess: true});
                 })

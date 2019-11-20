@@ -1,4 +1,4 @@
-import { container, title, primaryColor, warningColor } from "assets/jss/material-kit-react.jsx";
+import { container, title, primaryColor, warningColor } from "../../material-kit-react.jsx";
 
 const landingPageStyle = {
   container: {

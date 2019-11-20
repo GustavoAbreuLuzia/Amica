@@ -7,8 +7,8 @@ import {
   successColor,
   warningColor,
   dangerColor
-} from "assets/jss/material-kit-react.jsx";
-import tooltip from "assets/jss/material-kit-react/tooltipsStyle.jsx";
+} from "../../../material-kit-react.jsx";
+import tooltip from "../../tooltipsStyle.jsx";
 
 const productStyle = {
   section: {

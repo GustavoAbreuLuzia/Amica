@@ -6,13 +6,13 @@ import api from "../Utils/api";
 //Style
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import newsStyle from "assets/jss/material-kit-react/views/newsStyle.jsx";
+import newsStyle from "../assets/jss/material-kit-react/views/newsStyle.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import GridItem from "../components/Grid/GridItem.jsx";
 import Carousel from "react-slick";
-import ListNews from 'views/Components/ListNews.jsx';
+import ListNews from "../views/Components/ListNews.jsx";
 
 class News extends React.Component {
     constructor(props) {
@@ -41,14 +41,14 @@ class News extends React.Component {
         window.addEventListener("orientationchange", this.updateDimensions);
 
         if (this.state.news.title === "Carregando..."){
-            const news = await api.get(`/news/${this.state.id}`);
+            const news = await api.get(`/api/news/${this.state.id}`);
             this.setState({news: news.data});
         }
 
         if (this.state.listNews === null){
-            const news = await api.get('/News', {
+            const news = await api.get('/api/News', {
                 params: {
-                    quantity: 5
+                    quantity: 4
                 }
             });        
             this.setState({listNews: news.data});
@@ -67,16 +67,16 @@ class News extends React.Component {
         window.removeEventListener("orientationchange", this.updateDimensions);
     } 
     updateDimensions() {
-        let columnWidth = "20%";
+        let columnWidth = "25%";
         const windowSize = window.innerWidth;
         if(windowSize > 1200) {
-            columnWidth = "20%";
+            columnWidth = "25%";
         }
         else if(windowSize > 780) {
-            columnWidth = "33.33%";
+            columnWidth = "50%";
         }
         else {
-            columnWidth = "50%";
+            columnWidth = "100%";
         }
         this.setState({gridColumnWidth: columnWidth, windowSize: windowSize, windowHeight: window.innerHeight});
     }
@@ -99,17 +99,14 @@ class News extends React.Component {
                     </GridItem>
                   </GridContainer>
                   <GridContainer xs={12} className={classes.containerMobile} justify={windowSizeDesktop ? "" : "center"}>
-                    <GridItem xs={this.state.news.imgSrc !== "" ? 6 : 12}>
+                    <GridItem xs={this.state.news.imgSrc === "" || !windowSizeDesktop ? 12 : 6}>
                         <p className={classes.newsParagraph}>
                             {this.state.news.description}
                         </p>
-                        <label className={classes.newsDate}>
-                            {this.formatDate(this.state.news.Created_Date)}
-                        </label>
                     </GridItem>
                     {
                         this.state.news.imgSrc !== "" ?
-                        <GridItem xs={this.state.news.imgSrc !== "" ? 6 : 12}>
+                        <GridItem xs={this.state.news.imgSrc === "" || !windowSizeDesktop ? 12 : 6}>
                             <Carousel {...{dots: false,
                                     arrows: windowSizeDesktop,
                                     infinite: true,
@@ -128,6 +125,12 @@ class News extends React.Component {
                                     })
                                 }
                             </Carousel>
+                            {
+                                !windowSizeDesktop ?
+                                <label className={classes.newsDate}>
+                                    {this.formatDate(this.state.news.Created_Date)}
+                                </label> : ""
+                            }
                         </GridItem>
                         : ""
                     }

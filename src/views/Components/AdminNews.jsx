@@ -23,7 +23,7 @@ class AdminNews extends React.Component {
           };
     }
     async componentDidMount(){
-        const news = await api.get('/News', {
+        const news = await api.get('/api/News', {
           params: {
             quantity: 100
           }
@@ -36,7 +36,7 @@ class AdminNews extends React.Component {
     }
     async deleteNews(id) {
         const _this = this;
-        const news = await api.put(`/News/${id}`, { status: false })
+        const news = await api.put(`/api/News/${id}`, { status: false })
         .then(() => {
             const listNewsUpdated = _this.state.listNews.filter((news) => {
                 return news._id !== id;

@@ -1,4 +1,4 @@
-import { container, title, warningColor } from "assets/jss/material-kit-react.jsx";
+import { container, title, warningColor } from "../../material-kit-react.jsx";
 import { callbackify } from "util";
 
 const landingPageStyle = {

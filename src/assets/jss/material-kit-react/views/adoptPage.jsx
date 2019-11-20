@@ -1,6 +1,6 @@
-import { container, title, warningColor, primaryColor } from "assets/jss/material-kit-react.jsx";
-import imagesStyles from "assets/jss/material-kit-react/imagesStyles.jsx";
-import modalStyle from "assets/jss/material-kit-react/modalStyle.jsx";
+import { container, title, warningColor, primaryColor } from "../../material-kit-react.jsx";
+import imagesStyles from "../imagesStyles.jsx";
+import modalStyle from "../modalStyle.jsx";
 
 const adoptPage = {
     container: {

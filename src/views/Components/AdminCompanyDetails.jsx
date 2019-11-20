@@ -6,14 +6,14 @@ import api from "../../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AdminCompanyDetailsStyle from "assets/jss/material-kit-react/views/AdminCompanyDetails.jsx";
+import AdminCompanyDetailsStyle from "../../assets/jss/material-kit-react/views/AdminCompanyDetails.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Card from "components/Card/Card.jsx";    
-import Button from 'components/CustomButtons/Button.jsx';
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
+import CustomInput from "../../components/CustomInput/CustomInput.jsx";
+import Card from "../../components/Card/Card.jsx";    
+import Button from '../../components/CustomButtons/Button.jsx';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -68,7 +68,7 @@ class AdminCompanyDetails extends React.Component {
                     'content-type': 'multipart/form-data'
                 }
             };
-            const CompanyImageUpload = await api.post('/company/admin/upload', formData, config);
+            const CompanyImageUpload = await api.post('/api/company/admin/upload', formData, config);
             debugger;
             this.setState({imgSrc: `images/company/${CompanyImageUpload.data.filename}`});
         }
@@ -112,7 +112,7 @@ class AdminCompanyDetails extends React.Component {
             
             if(this.state.id === null){
                 // Insert
-                const CompanyInserted = await api.post('/company', Company)                
+                const CompanyInserted = await api.post('/api/company', Company)                
                 .then((item) => {
                     _this.setState({id: item.data._id, showCompanySuccess: true});
                 })
@@ -124,7 +124,7 @@ class AdminCompanyDetails extends React.Component {
                 // Update
                 Company._id = this.state.id;
 
-                const CompanyUpdated = await api.put(`/company/${this.state.id}`, Company)                
+                const CompanyUpdated = await api.put(`/api/company/${this.state.id}`, Company)                
                 .then(() => {
                     _this.setState({showCompanySuccess: true});
                 })

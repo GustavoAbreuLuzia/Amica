@@ -6,24 +6,24 @@ import api from "../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import ContactsStyle from "assets/jss/material-kit-react/views/Contacts.jsx";
+import ContactsStyle from "../assets/jss/material-kit-react/views/Contacts.jsx";
 
 //Icons
 import Person from "@material-ui/icons/Person";
 import Mail from "@material-ui/icons/Mail";
 import Phone from "@material-ui/icons/Phone";
 import Subject from "@material-ui/icons/Subject";
-import CatDog from "assets/img/catDog.svg";
+import CatDog from "../assets/img/catDog.svg";
 import CloseIcon from '@material-ui/icons/Close';
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import GridItem from "../components/Grid/GridItem.jsx";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Info from "components/Typography/Info.jsx";
-import Muted from "components/Typography/Muted.jsx";
-import Button from 'components/CustomButtons/Button.jsx';
+import CustomInput from "../components/CustomInput/CustomInput.jsx";
+import Info from "../components/Typography/Info.jsx";
+import Muted from "../components/Typography/Muted.jsx";
+import Button from '../components/CustomButtons/Button.jsx';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -116,7 +116,7 @@ class Contacts extends React.Component {
 
       if(fullFilled){
         const _this = this;
-        const mail = await api.post('/Contact', {
+        const mail = await api.post('/api/Contact', {
             name: this.state.name,
             mail: this.state.mail,
             phone: this.state.phone,

@@ -6,13 +6,13 @@ import { NavLink } from "react-router-dom";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
+import productStyle from "../../assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
 //Components
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Header from "components/Header/Header.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+import Header from "../../components/Header/Header.jsx";
+import Button from "../../components/CustomButtons/Button.jsx";
 
 class HeaderComponent extends React.Component {
     constructor(props) {

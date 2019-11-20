@@ -8,13 +8,13 @@ import { Route } from "react-router-dom";
 
 //Styles
 import withStyles from "@material-ui/core/styles/withStyles";
-import headerAdminStyle from "assets/jss/material-kit-react/views/landingPageSections/HeaderAdmin.jsx";
+import headerAdminStyle from "../../assets/jss/material-kit-react/views/landingPageSections/HeaderAdmin.jsx";
 
 //Components
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Header from "components/Header/Header.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+import Header from "../../components/Header/Header.jsx";
+import Button from "../../components/CustomButtons/Button.jsx";
 
 class HeaderAdmin extends React.Component {
     constructor(props) {
@@ -44,7 +44,7 @@ class HeaderAdmin extends React.Component {
       this.state.changePage(page);
     }
     async logOut(history) {
-      await api.delete('/usersAdmin/login/logout');
+      await api.delete('/api/usersAdmin/login/logout');
       history.push('/');
     }
     render() {

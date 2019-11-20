@@ -6,7 +6,13 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { List, ListItem, withStyles } from "@material-ui/core";
 
-import footerStyle from "assets/jss/material-kit-react/components/footerStyle.jsx";
+// Router
+import { NavLink } from "react-router-dom";  
+
+// Components
+import Button from "../../components/CustomButtons/Button.jsx";
+
+import footerStyle from "../../assets/jss/material-kit-react/components/footerStyle.jsx";
 
 function Footer({ ...props }) {
   const { classes, whiteFont } = props;
@@ -46,13 +52,11 @@ function Footer({ ...props }) {
         </div>
         <div className={classNames(classes.right, classes.block)}>
           &copy; {1900 + new Date().getYear()} , Created by{" "}
-          <a
-            href="https://www.google.com"
-            className={aClasses}
-            target="_blank"
-          >
-            Us
-          </a>
+          <NavLink to={"/Us"}>
+            <a className={aClasses}>
+                Us
+            </a>
+          </NavLink>
         </div>
       </div>
     </footer>

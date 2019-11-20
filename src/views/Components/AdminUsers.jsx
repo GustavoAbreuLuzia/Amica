@@ -23,7 +23,7 @@ class AdminUsers extends React.Component {
           };
     }
     async componentDidMount(){
-        const Users = await api.get('/usersAdmin');
+        const Users = await api.get('/api/usersAdmin');
   
         this.setState({listUsers: Users.data});
     }
@@ -32,7 +32,7 @@ class AdminUsers extends React.Component {
     }
     async deleteUsers(id) {
         const _this = this;
-        const Users = await api.put(`/usersAdmin/${id}`, { status: false })
+        const Users = await api.put(`/api/usersAdmin/${id}`, { status: false })
         .then(() => {
             const listUsersUpdated = _this.state.listUsers.filter((Users) => {
                 return Users._id !== id;

@@ -6,15 +6,15 @@ import api from "../../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AdminUsersDetailsStyle from "assets/jss/material-kit-react/views/AdminUsersDetails.jsx";
+import AdminUsersDetailsStyle from "../../assets/jss/material-kit-react/views/AdminUsersDetails.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
+import CustomInput from "../../components/CustomInput/CustomInput.jsx";
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
-import Button from 'components/CustomButtons/Button.jsx';
+import Button from '../../components/CustomButtons/Button.jsx';
 
 // Icons
 import CloseIcon from '@material-ui/icons/Close';
@@ -88,7 +88,7 @@ class AdminUsersDetails extends React.Component {
             
             if(this.state.id === null){
                 // Insert
-                const UsersInserted = await api.post('/usersAdmin', Users)                
+                const UsersInserted = await api.post('/api/usersAdmin', Users)                
                 .then((item) => {
                     _this.setState({id: item.data._id, showUsersSuccess: true});
                 })
@@ -100,7 +100,7 @@ class AdminUsersDetails extends React.Component {
                 // Update
                 Users._id = this.state.id;
 
-                const UsersUpdated = await api.put(`/usersAdmin/${this.state.id}`, Users)                
+                const UsersUpdated = await api.put(`/api/usersAdmin/${this.state.id}`, Users)                
                 .then(() => {
                     _this.setState({showUsersSuccess: true});
                 })

@@ -6,22 +6,22 @@ import api from "../Utils/api";
 //Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AdminContainerStyle from "assets/jss/material-kit-react/views/AdminContainer.jsx";
+import AdminContainerStyle from "../assets/jss/material-kit-react/views/AdminContainer.jsx";
 
 //Components
-import HeaderAdmin from "views/Components/HeaderAdmin";
-import Protected from "views/Components/Protected";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import AdminNews from "views/Components/AdminNews";
-import AdminContacts from "views/Components/AdminContacts";
-import AdminAdopt from "views/Components/AdminAdopt";
-import AdminPartner from "views/Components/AdminPartner";
-import AdminCompany from "views/Components/AdminCompany";
-import AdminUsers from "views/Components/AdminUsers";
-import AdminNewsDetails from "views/Components/AdminNewsDetails";
-import AdminAdoptDetails from "views/Components/AdminAdoptDetails";
-import AdminCompanyDetails from "views/Components/AdminCompanyDetails";
-import AdminUsersDetails from "views/Components/AdminUsersDetails";
+import HeaderAdmin from "../views/Components/HeaderAdmin.jsx";
+import Protected from "../views/Components/Protected.jsx";
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import AdminNews from "../views/Components/AdminNews.jsx";
+import AdminContacts from "../views/Components/AdminContacts.jsx";
+import AdminAdopt from "../views/Components/AdminAdopt.jsx";
+import AdminPartner from "../views/Components/AdminPartner.jsx";
+import AdminCompany from "../views/Components/AdminCompany.jsx";
+import AdminUsers from "../views/Components/AdminUsers.jsx";
+import AdminNewsDetails from "../views/Components/AdminNewsDetails.jsx";
+import AdminAdoptDetails from "../views/Components/AdminAdoptDetails.jsx";
+import AdminCompanyDetails from "../views/Components/AdminCompanyDetails.jsx";
+import AdminUsersDetails from "../views/Components/AdminUsersDetails.jsx";
 
 class AdminContainer extends React.Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class AdminContainer extends React.Component {
     async componentDidMount(){
       window.scrollTo(0,0);
 
-      const news = await api.get('/News', {
+      const news = await api.get('/api/News', {
         params: {
           quantity: 100
         }

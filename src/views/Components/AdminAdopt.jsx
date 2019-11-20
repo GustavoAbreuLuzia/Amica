@@ -23,7 +23,7 @@ class AdminAdopt extends React.Component {
           };
     }
     async componentDidMount(){
-        const adopt = await api.get('/Adopt', {
+        const adopt = await api.get('/api/Adopt', {
           params: {
             quantity: 100
           }
@@ -36,7 +36,7 @@ class AdminAdopt extends React.Component {
     }
     async deleteAdopt(id) {
         const _this = this;
-        const adopt = await api.put(`/Adopt/${id}`, { status: false })
+        const adopt = await api.put(`/api/Adopt/${id}`, { status: false })
         .then(() => {
             const listAdoptUpdated = _this.state.listAdopt.filter((adopt) => {
                 return adopt._id !== id;

@@ -12,17 +12,17 @@ import Face from "@material-ui/icons/Face";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Explore from "@material-ui/icons/Explore";
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Header from "components/Header/Header.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
-import Button from "components/CustomButtons/Button.jsx";
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import GridItem from "../components/Grid/GridItem.jsx";
+import Header from "../components/Header/Header.jsx";
+import CustomInput from "../components/CustomInput/CustomInput.jsx";
+import CustomDropdown from "../components/CustomDropdown/CustomDropdown.jsx";
+import Button from "../components/CustomButtons/Button.jsx";
 
-import navbarsStyle from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.jsx";
+import navbarsStyle from "../assets/jss/material-kit-react/views/componentsSections/navbarsStyle.jsx";
 
-import image from "assets/img/bg.jpg";
-import profileImage from "assets/img/faces/avatar.jpg";
+import image from "../assets/img/bg.jpg";
+import profileImage from "../assets/img/faces/avatar.jpg";
 
 class SectionNavbars extends React.Component {
   render() {

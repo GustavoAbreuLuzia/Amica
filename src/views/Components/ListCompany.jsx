@@ -1,7 +1,7 @@
 import React from 'react'
 
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
 import Tooltip from "@material-ui/core/Tooltip";
 
 

@@ -1,6 +1,7 @@
-import { container, title, primaryColor, warningColor } from "../../material-kit-react.jsx";
+import { container, title, warningColor } from "../../material-kit-react.jsx";
+import { callbackify } from "util";
 
-const landingPageStyle = {
+const Us = {
   container: {
     zIndex: "12",
     color: "#FFFFFF",
@@ -25,13 +26,6 @@ const landingPageStyle = {
   },  
   titleWrning:{
     color: warningColor
-  },
-  optionPetType: {
-    display: "inline-block",
-    color: warningColor
-  },
-  petTypeDisabled: {
-    color: "#cdcdcd"
   },
   main: {
     background: "#FFFFFF",
@@ -107,47 +101,25 @@ const landingPageStyle = {
   containerMobile: {
     margin: "0"
   },
-  imageGalery: {
-    width: "90%",
-    margin: "10px auto"
+  authorText: {
+    color: "#FF9800",
+    textAlign: "center",
+    display: "block"
   },
-  deleteIcon: {
-    margin: "0px auto 10px auto",
-    cursor: "pointer"
-  },
-  inputHidden: {
-    display: "none"
-  },
-  switchBase: {
-    color: primaryColor + "!important"
-  },
-  switchIcon: {
-    boxShadow: "0 1px 3px 1px rgba(0, 0, 0, 0.4)",
-    color: "#FFFFFF !important",
-    border: "1px solid rgba(0, 0, 0, .54)",
-    transform: "translateX(-4px)!important"
-  },
-  switchIconChecked: {
-    borderColor: "#9c27b0",
-    transform: "translateX(0px)!important"
-  },
-  switchBar: {
-    width: "30px",
-    height: "15px",
-    backgroundColor: warningColor + " !important",
-    borderRadius: "15px",
-  },
-  switchChecked: {
-    "& + $switchBar": {
-      backgroundColor: warningColor
+  link: {
+    "&:hover": {
+      textDecoration: "underline"
     }
   },
-  switchOptions: {
-    height: "100%",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center"
+  developerList: {
+    color: "#9c27b0"
+  },
+  paddingBottomContainer:{
+    paddingBottom: "20px"
+  },
+  templateText: {
+    color: "#FF9800"
   }
 };
 
-export default landingPageStyle;
+export default Us;

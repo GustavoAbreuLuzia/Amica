@@ -6,13 +6,13 @@ import api from "../Utils/api";
 // Styles
 import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import adoptPageStyle from "assets/jss/material-kit-react/views/adoptPage.jsx";
+import adoptPageStyle from "../assets/jss/material-kit-react/views/adoptPage.jsx";
 
 //Components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import CustomHeader from "components/CustomTabs/CustomHeader.jsx";
-import ListAdopt from 'views/Components/ListAdopt.jsx';
+import GridContainer from "../components/Grid/GridContainer.jsx";
+import GridItem from "../components/Grid/GridItem.jsx";
+import CustomHeader from "../components/CustomTabs/CustomHeader.jsx";
+import ListAdopt from "../views/Components/ListAdopt.jsx";
 
 // Icons
 import AllInclusive from "@material-ui/icons/AllInclusive";
@@ -40,7 +40,7 @@ class Adopt extends React.Component {
         window.addEventListener("resize", this.updateDimensions);
         window.addEventListener("orientationchange", this.updateDimensions);
 
-        const pets = await api.get('/adopt');
+        const pets = await api.get('/api/adopt');
 
         this.setState({listPets: pets.data});
     }

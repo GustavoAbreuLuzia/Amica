@@ -12,7 +12,7 @@ import Close from "@material-ui/icons/Close";
 //Components 
 import StackGrid from "react-stack-grid";
 import Carousel from "react-slick";
-import Button from 'components/CustomButtons/Button.jsx';
+import Button from '../../components/CustomButtons/Button.jsx';
 import IconButton from "@material-ui/core/IconButton";
 import Slide from "@material-ui/core/Slide";
 import Dialog from "@material-ui/core/Dialog";

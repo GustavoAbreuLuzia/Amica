@@ -14,7 +14,7 @@ class AdminContacts extends React.Component {
           };
     }
     async componentDidMount(){
-        const news = await api.get('/contact', {
+        const news = await api.get('/api/contact', {
           params: {
             quantity: 100
           }

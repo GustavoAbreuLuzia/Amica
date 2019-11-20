@@ -14,7 +14,7 @@ class AdminPartner extends React.Component {
           };
     }
     async componentDidMount(){
-        const partner = await api.get('/Partner', {
+        const partner = await api.get('/api/Partner', {
           params: {
             quantity: 100
           }

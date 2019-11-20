@@ -1,7 +1,7 @@
-import { container, title, warningColor, primaryColor } from "assets/jss/material-kit-react.jsx";
-import imagesStyles from "assets/jss/material-kit-react/imagesStyles.jsx";
-import customCheckboxRadioSwitch from "assets/jss/material-kit-react/customCheckboxRadioSwitch.jsx";
-import tooltipsStyle from "assets/jss/material-kit-react/tooltipsStyle.jsx";
+import { container, title, warningColor, primaryColor } from "../../material-kit-react.jsx";
+import imagesStyles from "../imagesStyles.jsx";
+import customCheckboxRadioSwitch from "../customCheckboxRadioSwitch.jsx";
+import tooltipsStyle from "../tooltipsStyle.jsx";
 
 const landingPageStyle = {
     container: {
