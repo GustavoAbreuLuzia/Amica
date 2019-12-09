@@ -25,7 +25,8 @@ class AdminCompanyDetails extends React.Component {
     constructor(props) {
         super(props);
         this.handleCloseCompanyMessageSuccess = this.handleCloseCompanyMessageSuccess.bind(this);  
-        this.handleCloseCompanyMessageFailure = this.handleCloseCompanyMessageFailure.bind(this);  
+        this.handleCloseCompanyMessageFailure = this.handleCloseCompanyMessageFailure.bind(this);
+        this.updateDimensions = this.updateDimensions.bind(this);  
         this.state = {
             id: null,
             name: "",
@@ -35,10 +36,15 @@ class AdminCompanyDetails extends React.Component {
             descriptionFilled: true,
             imageFilled: true,
             showSaveSuccess: false,
-            showSaveFailure: false
+            showSaveFailure: false,
+            windowSize: 1280,
+            windowHeight: 800
         };
     }
     componentDidMount(){
+        window.scrollTo(0,0);
+        window.addEventListener("resize", this.updateDimensions);
+        window.addEventListener("orientationchange", this.updateDimensions);
         const dataObject = this.props.dataObject;
         
         if(dataObject !== undefined){
@@ -49,6 +55,22 @@ class AdminCompanyDetails extends React.Component {
                 imgSrc: dataObject.imgSrc
             });
         }
+    }
+    componentWillMount() {
+      this.updateDimensions();
+    }
+    componentWillUnmount(){
+      window.removeEventListener("resize", this.updateDimensions);
+      window.removeEventListener("orientationchange", this.updateDimensions);
+    } 
+    updateDimensions() {
+      if(window.innerWidth !== this.state.windowSize){
+        this.setState({windowSize:  window.innerWidth});
+      }
+
+      if(window.innerHeight !== this.state.windowHeight){
+        this.setState({windowHeight: window.innerHeight});
+      }
     }
     updateInputState(stateName, newValue){
         this.setState({
@@ -69,8 +91,7 @@ class AdminCompanyDetails extends React.Component {
                 }
             };
             const CompanyImageUpload = await api.post('/api/company/admin/upload', formData, config);
-            debugger;
-            this.setState({imgSrc: `images/company/${CompanyImageUpload.data.filename}`});
+            this.setState({imgSrc: `/images/company/${CompanyImageUpload.data.filename}`});
         }
     }
     clickUploadImage(){
@@ -129,7 +150,7 @@ class AdminCompanyDetails extends React.Component {
                     _this.setState({showCompanySuccess: true});
                 })
                 .catch(() => {
-                    _this.setState({showCompanySuccess: true});
+                    _this.setState({showCompanyFailure: true});
                 })
             }
         }
@@ -146,11 +167,13 @@ class AdminCompanyDetails extends React.Component {
     }
     render() {
         const { classes } = this.props;
+        const windowSizeDesktop = this.state.windowSize > 780;
+        const windowHeightDesktop = this.state.windowHeight > 500;
         return (
             <div className={classes.container}>
                 <div className={classes.section}>
-                    <GridContainer xs={12}>
-                        <GridItem xs={12} className={classNames(classes.nameWrning, classes.name)}>
+                    <GridContainer xs={12} className={windowSizeDesktop ? "" : classes.containerMobile}>
+                        <GridItem xs={12} className={classNames(classes.titleWrning, classes.title)}>
                             <h3>Editar Parceiro</h3>
                         </GridItem>
                         <GridItem xs={12}>
@@ -185,14 +208,14 @@ class AdminCompanyDetails extends React.Component {
                         </GridItem>
                         {
                             this.state.imgSrc !== "" ?
-                            <GridItem xs={2}>
+                            <GridItem xs={!windowSizeDesktop && windowHeightDesktop ? 12 : !windowHeightDesktop ? 6 : 2}>
                                 <Card>
                                     <img className={classes.imageGalery} src={this.state.imgSrc}></img>
                                     <Delete onClick={() => this.deleteImage()} className={classes.deleteIcon}/>
                                 </Card>
                             </GridItem> : null 
                         }
-                        <GridItem xs={12} className={classes.contactSendMessage}>
+                        <GridItem xs={12} className={!windowSizeDesktop && windowHeightDesktop ? classes.contactSendMessageMobile : classes.contactSendMessage}>
                             <Button className={classes.buttonContactSendMessage} onClick={() => this.clickUploadImage()} type="button" color="primary">
                                 <input id={"btn_image"} type="file" name={"image"} ref={input => this.uploadInput = input} className={classes.inputHidden} onChange={evt => this.uploadImage(evt)}/>
                                 Adicionar Imagem

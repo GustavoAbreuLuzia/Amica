@@ -267,7 +267,7 @@ class Contacts extends React.Component {
                 </GridContainer>                
               </div>
             </div>
-            <img className={!windowSizeDesktop && windowHeightDesktop ? classes.imgBackgroundMobile : classes.imgBackground} src={CatDog}></img>
+            <img className={!windowSizeDesktop && windowHeightDesktop ? classes.imgBackgroundMobile : classes.imgBackground} src={`${CatDog}`}></img>
             <Snackbar
               anchorOrigin={{
                 vertical: 'bottom',

@@ -19,7 +19,8 @@ class AdminCompany extends React.Component {
         this.state = {
             listCompany: [],
             showCompanySuccess: false,
-            showCompanyFailure: false
+            showCompanyFailure: false,
+            windowSize: props.windowSize
           };
     }
     async componentDidMount(){
@@ -27,9 +28,15 @@ class AdminCompany extends React.Component {
           params: {
             quantity: 100
           }
+        })
+        .then((reponse) => {
+            reponse.data.forEach(item => {
+                item.descriptionMobile = item.description.trim().substr(0, 150) + "...";
+            });
+      
+            
+            this.setState({listCompany: reponse.data});
         });
-  
-        this.setState({listCompany: companies.data});
     }
     createCompany() {
         this.props.changeCurrentPage("CompanyDetail");
@@ -41,12 +48,16 @@ class AdminCompany extends React.Component {
             const listCompanyUpdated = _this.state.listCompany.filter((Company) => {
                 return Company._id !== id;
             });
+
+            listCompanyUpdated.forEach(news => {
+                news.descriptionMobile = news.description.trim().substr(0, 150) + "...";
+            });
             
             this.setState({listCompany: listCompanyUpdated})
             _this.setState({showCompanySuccess: true});
         })
         .catch(() => {
-            _this.setState({showCompanySuccess: true});
+            _this.setState({showCompanyFailure: true});
         })
     }
     handleCloseCompanyMessageSuccess(){
@@ -63,11 +74,11 @@ class AdminCompany extends React.Component {
         return (
             <div style={{width: "100%"}}>
                 <MaterialTable
-                    style={{ padding: "10px 30px", width: "100%" }}
+                    style={this.state.windowSize >= 780 ? { padding: "10px 30px", width: "100%" } : { width: "100%" }}
                     title="Empresas Parceiras"
                     columns={[
                         { title: 'Nome', field: 'name' },
-                        { title: 'Descrição', field: 'description' }
+                        { title: 'Descrição', field: this.state.windowSize >= 780 ? 'description' : 'descriptionMobile' }
                     ]}
                     data={this.state.listCompany}        
                     actions={[

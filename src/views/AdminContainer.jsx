@@ -27,14 +27,21 @@ class AdminContainer extends React.Component {
     constructor(props) {
       super(props);    
       this.state = {
+        windowSize: 1280,
         listNews: [],
         currentPage: "News",
         dataObject: undefined
       };
       this.changeCurrentPage = this.changeCurrentPage.bind(this);
+      this.updateDimensions = this.updateDimensions.bind(this);
+    }   
+    componentWillMount() {
+        this.updateDimensions();
     }
     async componentDidMount(){
       window.scrollTo(0,0);
+      window.addEventListener("resize", this.updateDimensions);
+      window.addEventListener("orientationchange", this.updateDimensions);
 
       const news = await api.get('/api/News', {
         params: {
@@ -44,23 +51,30 @@ class AdminContainer extends React.Component {
 
       this.setState({listNews: news.data});
     }
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.updateDimensions);
+        window.removeEventListener("orientationchange", this.updateDimensions);
+    }  
+    updateDimensions() {
+        this.setState({windowSize: window.innerWidth});
+    }
     currentPage(){
       const currentPage = this.state.currentPage;
       
       if (currentPage === "News"){
-        return <AdminNews changeCurrentPage={this.changeCurrentPage}/>;
+        return <AdminNews windowSize={this.state.windowSize} changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Contacts") {
-        return <AdminContacts/>;
+        return <AdminContacts windowSize={this.state.windowSize}/>;
       }
       else if (currentPage === "Adopt") {
-        return <AdminAdopt changeCurrentPage={this.changeCurrentPage}/>;
+        return <AdminAdopt windowSize={this.state.windowSize} changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Partners") {
         return <AdminPartner changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Company") {
-        return <AdminCompany changeCurrentPage={this.changeCurrentPage}/>;
+        return <AdminCompany windowSize={this.state.windowSize} changeCurrentPage={this.changeCurrentPage}/>;
       }
       else if (currentPage === "Users") {
         return <AdminUsers changeCurrentPage={this.changeCurrentPage}/>;

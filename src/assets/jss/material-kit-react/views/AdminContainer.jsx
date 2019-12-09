@@ -2,8 +2,7 @@ const adminContainerStyle = {
   main: {
     background: "#FFFFFF",
     position: "relative",
-    zIndex: "3",
-    minHeight: "Calc(100vh - 194px)"
+    zIndex: "3"
   },
   mainRaised: {
     margin: "110px 30px 0px",

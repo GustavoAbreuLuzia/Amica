@@ -28,6 +28,7 @@ class AdminAdoptDetails extends React.Component {
         super(props);
         this.handleCloseAdoptMessageSuccess = this.handleCloseAdoptMessageSuccess.bind(this);  
         this.handleCloseAdoptMessageFailure = this.handleCloseAdoptMessageFailure.bind(this);  
+        this.updateDimensions = this.updateDimensions.bind(this);
         this.state = {
             id: null,
             name: "",
@@ -38,10 +39,15 @@ class AdminAdoptDetails extends React.Component {
             nameFilled: true,
             descriptionFilled: true,
             showSaveSuccess: false,
-            showSaveFailure: false
+            showSaveFailure: false,
+            windowSize: 1280,
+            windowHeight: 800
         };
     }
     componentDidMount(){
+        window.scrollTo(0,0);
+        window.addEventListener("resize", this.updateDimensions);
+        window.addEventListener("orientationchange", this.updateDimensions);
         const dataObject = this.props.dataObject;
         
         if(dataObject !== undefined){
@@ -54,6 +60,22 @@ class AdminAdoptDetails extends React.Component {
                 images: dataObject.images
             });
         }
+    }
+    componentWillMount() {
+      this.updateDimensions();
+    }
+    componentWillUnmount(){
+      window.removeEventListener("resize", this.updateDimensions);
+      window.removeEventListener("orientationchange", this.updateDimensions);
+    } 
+    updateDimensions() {
+      if(window.innerWidth !== this.state.windowSize){
+        this.setState({windowSize:  window.innerWidth});
+      }
+
+      if(window.innerHeight !== this.state.windowHeight){
+        this.setState({windowHeight: window.innerHeight});
+      }
     }
     updateInputState(stateName, newValue){
         this.setState({
@@ -91,7 +113,7 @@ class AdminAdoptDetails extends React.Component {
             };
             const adoptImageUpload = await api.post('/api/adopt/admin/upload', formData, config);
             let imagesUpdated = this.state.images;  
-            imagesUpdated.push('images/adopt/' + adoptImageUpload.data.filename);
+            imagesUpdated.push('/images/adopt/' + adoptImageUpload.data.filename);
             this.setState({images: imagesUpdated})
         }
     }
@@ -145,7 +167,7 @@ class AdminAdoptDetails extends React.Component {
                     _this.setState({showAdoptSuccess: true});
                 })
                 .catch(() => {
-                    _this.setState({showAdoptSuccess: true});
+                    _this.setState({showAdoptFailure: true});
                 })
             }
         }
@@ -162,14 +184,16 @@ class AdminAdoptDetails extends React.Component {
     }
     render() {
         const { classes } = this.props;
+        const windowSizeDesktop = this.state.windowSize > 780;
+        const windowHeightDesktop = this.state.windowHeight > 500;
         return (
             <div className={classes.container}>
                 <div className={classes.section}>
-                    <GridContainer xs={12}>
-                        <GridItem xs={12} className={classNames(classes.nameWrning, classes.name)}>
+                    <GridContainer xs={12} className={windowSizeDesktop ? "" : classes.containerMobile}>
+                        <GridItem xs={12} className={classNames(classes.titleWrning, classes.title)}>
                             <h3>Editar Adoção</h3>
                         </GridItem>
-                        <GridItem xs={10}>
+                        <GridItem xs={windowSizeDesktop ? 10 : 12}>
                             <CustomInput
                                 labelText="Nome"
                                 id="name"
@@ -184,7 +208,7 @@ class AdminAdoptDetails extends React.Component {
                                 }}
                             />
                         </GridItem>
-                        <GridItem xs={2}>
+                        <GridItem xs={windowSizeDesktop ? 2 : 12}>
                             <div className={classes.switchOptions}>
                                 <h6 className={!this.state.petTypeSelected ? classes.optionPetType : classNames(classes.petTypeDisabled, classes.optionPetType)}>Cão</h6>
                                 <FormControlLabel
@@ -222,7 +246,7 @@ class AdminAdoptDetails extends React.Component {
                         </GridItem>
                         {
                             this.state.images.map((image) => {
-                                return <GridItem xs={2}>
+                                return <GridItem xs={!windowSizeDesktop && windowHeightDesktop ? 12 : !windowHeightDesktop ? 6 : 2}>
                                         <Card>
                                             <img className={classes.imageGalery} src={image}></img>
                                             <Delete onClick={() => this.deleteImage(image)} className={classes.deleteIcon}/>
@@ -230,7 +254,7 @@ class AdminAdoptDetails extends React.Component {
                                 </GridItem>
                             })
                         }
-                        <GridItem xs={12} className={classes.contactSendMessage}>
+                        <GridItem xs={12} className={!windowSizeDesktop && windowHeightDesktop ? classes.contactSendMessageMobile : classes.contactSendMessage}>
                             <Button className={classes.buttonContactSendMessage} onClick={() => this.clickUploadImage()} type="button" color="primary">
                                 <input id={"btn_image"} type="file" name={"image"} ref={input => this.uploadInput = input} className={classes.inputHidden} onChange={evt => this.uploadImage(evt)}/>
                                 Adicionar Imagem

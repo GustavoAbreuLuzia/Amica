@@ -59,7 +59,7 @@ class News extends React.Component {
                     description={
                         <span>
                             <span onClick={() => this.newsDetailed(notice._id, history)} className={this.state.windowSize ? classNames(classes.hoverUnderline, classes.spanVerMais) : classNames(classes.hoverUnderline, classes.spanVerMais, classes.spanVerMaisMobile)}>Ver Mais</span>
-                            {hasImage ? <img width={"100%"} src={this.state.home ? notice.imgSrc : `../${notice.imgSrc}`}></img> : ""} 
+                            {hasImage ? <img width={"100%"} src={notice.imgSrc}></img> : ""} 
                             <p>
                                 {descriptionCut}
                             </p>

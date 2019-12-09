@@ -24,6 +24,7 @@ class AdminUsersDetails extends React.Component {
         super(props);
         this.handleCloseUsersMessageSuccess = this.handleCloseUsersMessageSuccess.bind(this);  
         this.handleCloseUsersMessageFailure = this.handleCloseUsersMessageFailure.bind(this);  
+        this.updateDimensions = this.updateDimensions.bind(this);
         this.state = {
             id: null,
             name: "",
@@ -33,10 +34,15 @@ class AdminUsersDetails extends React.Component {
             userFilled: true,
             passwordFilled: true,
             showSaveSuccess: false,
-            showSaveFailure: false
+            showSaveFailure: false,
+            windowSize: 1280,
+            windowHeight: 800
         };
     }
     componentDidMount(){
+        window.scrollTo(0,0);
+        window.addEventListener("resize", this.updateDimensions);
+        window.addEventListener("orientationchange", this.updateDimensions);
         const dataObject = this.props.dataObject;
         
         if(dataObject !== undefined){
@@ -46,6 +52,22 @@ class AdminUsersDetails extends React.Component {
                 user: dataObject.userLogin
             });
         }
+    }
+    componentWillMount() {
+      this.updateDimensions();
+    }
+    componentWillUnmount(){
+      window.removeEventListener("resize", this.updateDimensions);
+      window.removeEventListener("orientationchange", this.updateDimensions);
+    } 
+    updateDimensions() {
+      if(window.innerWidth !== this.state.windowSize){
+        this.setState({windowSize:  window.innerWidth});
+      }
+
+      if(window.innerHeight !== this.state.windowHeight){
+        this.setState({windowHeight: window.innerHeight});
+      }
     }
     updateInputState(stateName, newValue){
         this.setState({
@@ -122,11 +144,13 @@ class AdminUsersDetails extends React.Component {
     }
     render() {
         const { classes } = this.props;
+        const windowSizeDesktop = this.state.windowSize > 780;
+        const windowHeightDesktop = this.state.windowHeight > 500;
         return (
             <div className={classes.container}>
                 <div className={classes.section}>
-                    <GridContainer xs={12}>
-                        <GridItem xs={12} className={classNames(classes.nameWrning, classes.name)}>
+                    <GridContainer xs={12} className={windowSizeDesktop ? "" : classes.containerMobile}>
+                        <GridItem xs={12} className={classNames(classes.titleWrning, classes.title)}>
                             <h3>Editar Usuário</h3>
                         </GridItem>
                         <GridItem xs={12}>
@@ -144,7 +168,7 @@ class AdminUsersDetails extends React.Component {
                                 }}
                             />
                         </GridItem>
-                        <GridItem xs={6}>
+                        <GridItem xs={windowSizeDesktop ? 6 : 12}>
                             <CustomInput
                                 labelText="Usuário"
                                 id="user"
@@ -158,7 +182,7 @@ class AdminUsersDetails extends React.Component {
                                 }}
                             />
                         </GridItem>
-                        <GridItem xs={6}>
+                        <GridItem xs={windowSizeDesktop ? 6 : 12}>
                             <CustomInput
                                 labelText="Password"
                                 id="user"
@@ -173,7 +197,7 @@ class AdminUsersDetails extends React.Component {
                                 }}
                             />
                         </GridItem>
-                        <GridItem xs={12} className={classes.contactSendMessage}>
+                        <GridItem xs={12} className={!windowSizeDesktop && windowHeightDesktop ? classes.contactSendMessageMobile : classes.contactSendMessage}>
                             <Button className={classes.buttonContactSendMessage} onClick={() => this.saveUser()} type="button" color="primary">Salvar</Button>
                         </GridItem> 
                     </GridContainer>

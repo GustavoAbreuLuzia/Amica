@@ -10,27 +10,33 @@ class AdminContacts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            listContacts: []
+            listContacts: [],
+            windowSize: props.windowSize
           };
     }
     async componentDidMount(){
-        const news = await api.get('/api/contact', {
+        const contacts = await api.get('/api/contact', {
           params: {
             quantity: 100
           }
+        })
+        .then((reponse) => {
+            reponse.data.forEach(item => {
+                item.messageMobile = item.message.trim().substr(0, 150) + "...";
+            });
+
+            this.setState({listContacts: reponse.data});
         });
-  
-        this.setState({listContacts: news.data});
     }
     render() {
         return (
             <MaterialTable
-                style={{ padding: "10px 30px", width: "100%" }}
+            style={this.state.windowSize >= 780 ? { padding: "10px 30px", width: "100%" } : { width: "100%" }}
                 title="Contatos"
                 columns={[
                     { title: 'Nome', field: 'name' },
                     { title: 'Email', field: 'mail' },
-                    { title: 'Mensagem', field: 'message' }
+                    { title: 'Mensagem', field: this.state.windowSize >= 780 ? 'message' : 'messageMobile' }
                 ]}
                 data={this.state.listContacts}   
                 localization={{

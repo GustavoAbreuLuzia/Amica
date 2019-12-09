@@ -19,7 +19,8 @@ class AdminNews extends React.Component {
         this.state = {
             listNews: [],
             showNewsSuccess: false,
-            showNewsFailure: false
+            showNewsFailure: false,
+            windowSize: props.windowSize
           };
     }
     async componentDidMount(){
@@ -27,9 +28,14 @@ class AdminNews extends React.Component {
           params: {
             quantity: 100
           }
+        })
+        .then((reponse) => {
+            reponse.data.forEach(item => {
+                item.descriptionMobile = item.description.trim().substr(0, 150) + "...";
+            });
+      
+            this.setState({listNews: reponse.data});
         });
-  
-        this.setState({listNews: news.data});
     }
     createNews() {
         this.props.changeCurrentPage("NewsDetail");
@@ -42,11 +48,15 @@ class AdminNews extends React.Component {
                 return news._id !== id;
             });
             
+            listNewsUpdated.forEach(news => {
+                news.descriptionMobile = news.description.trim().substr(0, 150) + "...";
+            });
+
             this.setState({listNews: listNewsUpdated})
             _this.setState({showNewsSuccess: true});
         })
         .catch(() => {
-            _this.setState({showNewsSuccess: true});
+            _this.setState({showNewsFailure: true});
         })
     }
     handleCloseNewsMessageSuccess(){
@@ -63,11 +73,11 @@ class AdminNews extends React.Component {
         return (
             <div style={{width: "100%"}}>
                 <MaterialTable
-                    style={{ padding: "10px 30px", width: "100%" }}
+                    style={this.state.windowSize >= 780 ? { padding: "10px 30px", width: "100%" } : { width: "100%" }}
                     title="Notícias"
                     columns={[
                         { title: 'Título', field: 'title' },
-                        { title: 'Descrição', field: 'description' }
+                        { title: 'Descrição', field: this.state.windowSize >= 780 ? 'description' : 'descriptionMobile' }
                     ]}
                     data={this.state.listNews}        
                     actions={[

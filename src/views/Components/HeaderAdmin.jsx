@@ -49,54 +49,53 @@ class HeaderAdmin extends React.Component {
     }
     render() {
       const { classes } = this.props;
+      const { windowSize } = this.state;
+      const listButtons = <ListItem className={classes.listItem}>                  
+          <Button
+            color="transparent"
+            onClick={() => this.changePage("News")}
+          >
+            Notícias                    
+          </Button>
+          <Button
+            color="transparent"
+            onClick={() => this.changePage("Contacts")}
+          >
+            Contatos                    
+          </Button>                 
+          <Button
+            color="transparent"
+            onClick={() => this.changePage("Adopt")}
+          >
+            Adoções
+          </Button>                 
+          {/* <Button
+            color="transparent"
+            onClick={() => this.changePage("Partners")}
+          >
+            Sócios
+          </Button>                  */}
+          <Button
+            color="transparent"
+            onClick={() => this.changePage("Company")}
+          >
+            Parceiros
+          </Button>                 
+          <Button
+            color="transparent"
+            onClick={() => this.changePage("Users")}
+          >
+            Usuários
+          </Button>
+        </ListItem>;
       return (  
         <Header 
           color="white"
           fixed
-          leftLinks={
-            <List className={classes.list}>
-              <ListItem className={classes.listItem}>                  
-                <Button
-                  color="transparent"
-                  onClick={() => this.changePage("News")}
-                >
-                  Notícias                    
-                </Button>
-                <Button
-                  color="transparent"
-                  onClick={() => this.changePage("Contacts")}
-                >
-                  Contatos                    
-                </Button>                 
-                <Button
-                  color="transparent"
-                  onClick={() => this.changePage("Adopt")}
-                >
-                  Adoções
-                </Button>                 
-                {/* <Button
-                  color="transparent"
-                  onClick={() => this.changePage("Partners")}
-                >
-                  Sócios
-                </Button>                  */}
-                <Button
-                  color="transparent"
-                  onClick={() => this.changePage("Company")}
-                >
-                  Parceiros
-                </Button>                 
-                <Button
-                  color="transparent"
-                  onClick={() => this.changePage("Users")}
-                >
-                  Usuários
-                </Button>
-              </ListItem>
-            </List>
-          }
+          leftLinks={ windowSize >= 780 ? <List className={classes.list}>{listButtons}</List> : null }
           rightLinks={
             <List className={classes.list}>
+              { windowSize < 780 ? <List className={classes.list}>{listButtons}</List> : null }
               <ListItem className={classes.listItem}>
                 <Route render={({ history }) => (
                   <Button 

@@ -118,7 +118,7 @@ class News extends React.Component {
                                     this.state.news.images.map((image) => {
                                         return <div className={classes.divCarousel}>
                                             <img
-                                                src={`../${image}`}
+                                                src={`${image}`}
                                                 className={windowSizeDesktop ? classes.imgCarousel : classes.imgCarouselMobile}
                                             />
                                         </div>

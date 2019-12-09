@@ -19,7 +19,8 @@ class AdminAdopt extends React.Component {
         this.state = {
             listAdopt: [],
             showAdoptSuccess: false,
-            showAdoptFailure: false
+            showAdoptFailure: false,
+            windowSize: props.windowSize
           };
     }
     async componentDidMount(){
@@ -27,9 +28,14 @@ class AdminAdopt extends React.Component {
           params: {
             quantity: 100
           }
+        })
+        .then((reponse) => {
+            reponse.data.forEach(item => {
+                item.descriptionMobile = item.description.trim().substr(0, 150) + "...";
+            });
+
+            this.setState({listAdopt: reponse.data});
         });
-  
-        this.setState({listAdopt: adopt.data});
     }
     createAdopt() {
         this.props.changeCurrentPage("AdoptDetail");
@@ -42,11 +48,15 @@ class AdminAdopt extends React.Component {
                 return adopt._id !== id;
             });
             
+            listAdoptUpdated.forEach(news => {
+                news.descriptionMobile = news.description.trim().substr(0, 150) + "...";
+            });
+
             this.setState({listAdopt: listAdoptUpdated})
             _this.setState({showAdoptSuccess: true});
         })
         .catch(() => {
-            _this.setState({showAdoptSuccess: true});
+            _this.setState({showAdoptFailure: true});
         })
     }
     handleCloseAdoptMessageSuccess(){
@@ -63,11 +73,11 @@ class AdminAdopt extends React.Component {
         return (
             <div style={{width: "100%"}}>
                 <MaterialTable
-                    style={{ padding: "10px 30px", width: "100%" }}
+                    style={this.state.windowSize >= 780 ? { padding: "10px 30px", width: "100%" } : { width: "100%" }}
                     title="Adotar"
                     columns={[
                         { title: 'Nome', field: 'name' },
-                        { title: 'Descrição', field: 'description' }
+                        { title: 'Descrição', field: this.state.windowSize >= 780 ? 'description' : 'descriptionMobile' }
                     ]}
                     data={this.state.listAdopt}        
                     actions={[
