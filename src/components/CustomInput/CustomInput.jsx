@@ -112,8 +112,8 @@ function CustomInput({ ...props }) {
           }}
           id={id}
           {...inputProps}
-          inputProps={inputProps !== undefined && inputProps.maxlength !== undefined ? {
-            maxLength: inputProps.maxlength // MaxLength do not work directly on {...inputProps}
+          inputProps={inputProps !== undefined && inputProps.maxLength !== undefined ? {
+            maxLength: inputProps.maxLength // MaxLength do not work directly on {...inputProps}
           } : {}}       
         />}
       </FormControl> 

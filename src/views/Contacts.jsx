@@ -170,7 +170,7 @@ class Contacts extends React.Component {
                         inputProps={{
                             endAdornment: (<InputAdornment position="end"><Person/></InputAdornment>),
                             onChange: evt => this.updateInputState("name", evt),
-                            maxlength: 100,
+                            maxLength: 100,
                             value: this.state.name
                         }}
                       />
@@ -185,7 +185,7 @@ class Contacts extends React.Component {
                         inputProps={{
                             endAdornment: (<InputAdornment position="end"><Mail/></InputAdornment>),
                             onChange: evt => this.updateInputState("mail", evt),
-                            maxlength: 100,
+                            maxLength: 100,
                             value: this.state.mail
                         }}
                       />
@@ -200,7 +200,7 @@ class Contacts extends React.Component {
                         inputProps={{
                             endAdornment: (<InputAdornment position="end"><Phone/></InputAdornment>),
                             onChange: evt => this.updateInputState("phone", evt),
-                            maxlength: 50,
+                            maxLength: 50,
                             value: this.state.phone
                         }}
                       />
@@ -216,7 +216,7 @@ class Contacts extends React.Component {
                         inputProps={{
                             endAdornment: (<InputAdornment position="end"><Subject/></InputAdornment>),
                             onChange: evt => this.updateInputState("subject", evt),
-                            maxlength: 50,
+                            maxLength: 50,
                             value: this.state.subject
                         }}
                       />
@@ -232,7 +232,7 @@ class Contacts extends React.Component {
                         inputProps={{
                           multiline: true,
                           onChange: evt => this.updateInputState("message", evt),
-                          maxlength: 2500,
+                          maxLength: 2500,
                           value: this.state.message
                         }}
                       />

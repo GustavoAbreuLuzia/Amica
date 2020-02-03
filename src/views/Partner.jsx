@@ -244,7 +244,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("name", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.name
                                     }}
                                 />
@@ -259,7 +259,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("document", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.document
                                     }}
                                 />
@@ -288,7 +288,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("address", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.address
                                     }}
                                 />
@@ -303,7 +303,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("city", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.city
                                     }}
                                 />
@@ -318,7 +318,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("postalCode", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.postalCode
                                     }}
                                 />
@@ -333,7 +333,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("mail", evt),
-                                        maxlength: 200,
+                                        maxLength: 200,
                                         value: this.state.mail
                                     }}
                                 />
@@ -348,7 +348,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("job", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.job
                                     }}
                                 />
@@ -363,7 +363,7 @@ class Partners extends React.Component {
                                     }}
                                     inputProps={{
                                         onChange: evt => this.updateInputState("phone", evt),
-                                        maxlength: 100,
+                                        maxLength: 100,
                                         value: this.state.phone
                                     }}
                                 />

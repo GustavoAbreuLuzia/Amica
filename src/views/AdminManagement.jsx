@@ -133,7 +133,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           ),
                           onChange: evt => this.updateInputState("userName", evt),
-                          maxlength: 100,
+                          maxLength: 100,
                           value: this.state.userName
                         }}
                       />                      
@@ -154,7 +154,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           ),
                           onChange: evt => this.updateInputState("password", evt),
-                          maxlength: 100,
+                          maxLength: 100,
                           value: this.state.password
                         }}
                       />

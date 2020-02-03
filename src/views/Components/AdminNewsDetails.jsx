@@ -86,10 +86,13 @@ class AdminNewsDetails extends React.Component {
         }
     }
     async uploadImage(event) {
-        const imageFiles = event.target.files[0];
+        const imageFiles = event.target.files;
         if (imageFiles !== null) {
             const formData = new FormData();
-            formData.append('image', imageFiles);
+            for (let index = 0; index < imageFiles.length; index++) {
+                const element = imageFiles[index];
+                formData.append('image', element);    
+            }
             const config = {
                 headers: {
                     'content-type': 'multipart/form-data'
@@ -97,7 +100,7 @@ class AdminNewsDetails extends React.Component {
             };
             const newsImageUpload = await api.post('/api/news/admin/upload', formData, config);
             let imagesUpdated = this.state.images;  
-            imagesUpdated.push('/images/news/' + newsImageUpload.data.filename);
+            newsImageUpload.data.filesName.forEach(fileName => imagesUpdated.push('/images/news/' + fileName));
             this.setState({images: imagesUpdated})
         }
     }
@@ -187,7 +190,7 @@ class AdminNewsDetails extends React.Component {
                                 }}
                                 inputProps={{
                                     onChange: evt => this.updateInputState("title", evt),
-                                    maxlength: 100,
+                                    maxLength: 100,
                                     value: this.state.title
                                 }}
                             />
@@ -219,7 +222,7 @@ class AdminNewsDetails extends React.Component {
                         }
                         <GridItem xs={12} className={!windowSizeDesktop && windowHeightDesktop ? classes.contactSendMessageMobile : classes.contactSendMessage}>
                             <Button className={classes.buttonContactSendMessage} onClick={() => this.clickUploadImage()} type="button" color="primary">
-                                <input id={"btn_image"} type="file" name={"image"} ref={input => this.uploadInput = input} className={classes.inputHidden} onChange={evt => this.uploadImage(evt)}/>
+                                <input id={"btn_image"} type="file" name={"image"} ref={input => this.uploadInput = input} className={classes.inputHidden} onChange={evt => this.uploadImage(evt)} multiple/>
                                 Adicionar Imagem
                             </Button>
                             <Button className={classes.buttonContactSendMessage} onClick={() => this.saveNews()} type="button" color="primary">Salvar</Button>

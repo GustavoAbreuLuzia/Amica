@@ -163,7 +163,7 @@ class AdminUsersDetails extends React.Component {
                                 }}
                                 inputProps={{
                                     onChange: evt => this.updateInputState("name", evt),
-                                    maxlength: 100,
+                                    maxLength: 100,
                                     value: this.state.name
                                 }}
                             />
