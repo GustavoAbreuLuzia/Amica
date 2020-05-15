@@ -158,7 +158,7 @@ class AdminAdoptDetails extends React.Component {
                     _this.setState({id: item.data._id, showAdoptSuccess: true});
                 })
                 .catch(() => {
-                    _this.setState({showAdoptSuccess: true});
+                    _this.setState({showAdoptFailure: true});
                 })
             }
             else {

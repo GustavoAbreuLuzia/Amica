@@ -370,10 +370,12 @@ class Partners extends React.Component {
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 6 : 12} className={windowSizeDesktop ? classes.primaryColor : classNames(classes.primaryColor, classes.textCenterMobile)}> 
                                 <p className={classes.contactAccountSub}>
-                                    Além deste registro é necessário enviar o comprovante do depósito para nós.<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
+                                    Além deste registo é necessário enviar o comprovativo do depósito por e-mail:<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
                                     EMAIL: AssociacaoAmica@hotmail.com<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
                                     IBAN: PT50 0045 2216 4027 1549 63919<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
-                                    IBAN/SWIFT: CCCMPTPL
+                                    IBAN/SWIFT: CCCMPTPL<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
+                                    MBWAY: 926708103<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
+                                    PAYPAL: paypal.me/amicuscanis
                                 </p>
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 4 : 6} className={classes.contactSendMessage}>
@@ -394,7 +396,7 @@ class Partners extends React.Component {
                                 </div>
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 2 : 6} className={classes.contactSendMessage}>
-                                <Button className={classes.buttonContactSendMessage} onClick={() => this.sendRegistry()} type="button"  color="primary" disabled={!this.state.checked}>Registrar</Button>
+                                <Button className={classes.buttonContactSendMessage} onClick={() => this.sendRegistry()} type="button"  color="primary" disabled={!this.state.checked}>Registar</Button>
                             </GridItem>
                         </GridContainer>
                         <GridContainer xs={12} className={windowSizeDesktop ? "" : classes.containerMobile}>

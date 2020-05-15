@@ -47,6 +47,9 @@ const landingPageStyle = {
       textDecoration: "underline"
     }
   },
+  contactIconPaypal:{
+    width: "120px"
+  },
   contactAlign:{
     margin: "auto",
     textAlign: "center"

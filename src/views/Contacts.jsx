@@ -14,6 +14,7 @@ import Mail from "@material-ui/icons/Mail";
 import Phone from "@material-ui/icons/Phone";
 import Subject from "@material-ui/icons/Subject";
 import CatDog from "../assets/img/catDog.svg";
+import PaypalLogo from "../assets/img/paypalLogo.png";
 import CloseIcon from '@material-ui/icons/Close';
 
 //Components
@@ -261,6 +262,12 @@ class Contacts extends React.Component {
                         <br/>
                         <span className={classes.contactAccountSub}>IBAN/SWIFT:</span> 
                         CCCMPTPL
+                        <br/>
+                        <span className={classes.contactAccountSub}>MBWAY:</span> 
+                        926708103
+                        <br/>
+                        <br/>
+                        <a target={"_blank"} href="https://paypal.me/amicuscanis"><img className={classes.contactIconPaypal} src={`${PaypalLogo}`}></img></a>
                       </Muted> 
                     </GridItem>
                   </GridContainer>
