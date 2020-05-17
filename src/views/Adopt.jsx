@@ -24,7 +24,7 @@ class Adopt extends React.Component {
       super(props);    
       this.updateDimensions = this.updateDimensions.bind(this);
       this.state = {
-        petFilter: "",
+        petFilter: 0,
         gridColumnWidth: "33.33%",
         windowSize: 1280,
         windowHeight: 800,
@@ -76,6 +76,9 @@ class Adopt extends React.Component {
                             <GridItem className={classes.gridItemTitle} xs={12} sm={12} md={8}>
                                 <h2 className={classNames(classes.titleWrning, classes.title)}>Adote</h2>
                             </GridItem>
+                            <GridItem className={classes.gridItemTitle} xs={12} sm={12} md={12}>
+                                <p className={classes.aboutAdopt}>A Associação Amicus Canis preocupa-se com os animais ao seu cuidado sendo todos provenientes da rua e/ou de maustratos, negligência ou falta de cuidados básicos de bem estar animal, garantindo que todos os seus animais sejam adotados mediante a assinatura e compromisso de um termo de Adoção Responsável. Todos os animais adotados são entregues com a primeira vacina, chip com registro no SIAC e castração/esterilização ou compromisso da mesma na devida idade.</p>
+                            </GridItem>
                         </GridContainer>
                         <CustomHeader
                             headerColor="primary"
@@ -83,7 +86,7 @@ class Adopt extends React.Component {
                                 {
                                 tabName: "Todos",
                                 tabIcon: AllInclusive,
-                                value: ""
+                                value: 0
                                 },
                                 {
                                 tabName: "Cães",

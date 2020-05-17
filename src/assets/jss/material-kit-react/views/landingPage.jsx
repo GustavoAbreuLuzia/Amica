@@ -89,6 +89,10 @@ const landingPageStyle = {
     fontSize: "16px",
     textDecoration: "underline"
   },
+  descriptionNews: {
+    margin: "0 0 10px",
+    display: "block"
+  },
   hoverUnderline: {
     "&:hover": {
       textDecoration: "underline"

@@ -57,6 +57,14 @@ const footerStyle = {
     height: "18px",
     position: "relative",
     top: "3px"
+  },
+  labelAsA: {
+    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    fontSize: "12px",
+    fontWeight: "500",
+    "&,&:hover,&:focus": {
+      cursor: "pointer"
+    }
   }
 };
 export default footerStyle;

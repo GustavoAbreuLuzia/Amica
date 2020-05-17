@@ -45,6 +45,10 @@ const adoptPage = {
     paddingBottom: {
         paddingBottom: "20px"
     },
+    aboutAdopt: {
+        color: "#9e37b4",
+        textAlign: "justify"
+    },
     imageNone: {
         display: "none"
     },

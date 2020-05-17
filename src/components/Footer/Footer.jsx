@@ -22,6 +22,7 @@ function Footer({ ...props }) {
   });
   const aClasses = classNames({
     [classes.a]: true,
+    [classes.labelAsA]: true,
     [classes.footerWhiteFont]: whiteFont
   });
   return (
@@ -53,9 +54,9 @@ function Footer({ ...props }) {
         <div className={classNames(classes.right, classes.block)}>
           &copy; {1900 + new Date().getYear()} , Created by{" "}
           <NavLink to={"/Us"}>
-            <a className={aClasses}>
+            <label className={aClasses}>
                 Us
-            </a>
+            </label>
           </NavLink>
         </div>
       </div>

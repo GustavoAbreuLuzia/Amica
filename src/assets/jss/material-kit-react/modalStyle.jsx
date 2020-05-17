@@ -2,6 +2,10 @@ const modalStyle = {
   modal: {
     borderRadius: "6px"
   },
+  modalMobileUniqueImage: {
+    borderRadius: "6px",
+    minWidth: "Calc(100% - 60px)"
+  },
   modalHeader: {
     borderBottom: "none",
     paddingTop: "24px",
@@ -46,6 +50,20 @@ const modalStyle = {
       height: 0
     }
   },
+  modalBodyUniqueImage: {
+    minWidth: "600px",
+    paddingTop: "24px",
+    paddingRight: "24px",
+    paddingBottom: "16px",
+    paddingLeft: "24px",
+    position: "relative",
+    scrollbarWidth: "none", /* Firefox */
+    msOverflowStyle: "none",  /* IE 10+ */
+    "&::-webkit-scrollbar": {
+      width: 0,
+      height: 0
+    }
+  },
   modalFooter: {
     padding: "15px",
     textAlign: "right",
@@ -59,6 +77,9 @@ const modalStyle = {
   modalFooterCenter: {
     marginLeft: "auto",
     marginRight: "auto"
+  },
+  containerModal: {
+    minWidth: "600px"
   }
 };
 

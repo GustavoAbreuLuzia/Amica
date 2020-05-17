@@ -88,15 +88,15 @@ class Pets extends React.Component {
         const windowSizeDesktop = this.state.windowSize > 780;
         return (
         <div>
-            <StackGrid gridRef={grid => this.props.grid(grid)} columnWidth={this.state.columnWidth}>
-                {this.state.pets.map((pet) => {
-                    if (this.props.petFilter === pet.petType || this.props.petFilter === ""){
-                        return <div>
+            <StackGrid monitorImagesLoaded={true} gridRef={grid => this.props.grid(grid)} columnWidth={this.state.columnWidth}>
+                {this.state.pets.map((pet, indexPet) => {
+                    if (this.props.petFilter === pet.petType || this.props.petFilter === 0){
+                        return <div key={indexPet}>
                             <img onClick={() => this.handleClickOpen(pet._id)} src={pet.imgSrc} alt={pet.name} className={classNames(classes.imgRounded, classes.imgRaised, classes.imgGrid)}/>
                             <Dialog
                                 classes={{
                                     root: classes.center,
-                                    paper: classes.modal
+                                    paper: !windowSizeDesktop && pet.images.length === 1 ? classes.modalMobileUniqueImage : classes.modal
                                 }}
                                 open={this.state.modalOpen[pet._id]}
                                 TransitionComponent={Transition}
@@ -109,18 +109,18 @@ class Pets extends React.Component {
                                     disableTypography
                                     className={classes.modalHeader}>
                                     <IconButton
-                                    className={classes.modalCloseButton}
-                                    key="close"
-                                    aria-label="Close"
-                                    color="inherit"
-                                    onClick={() => this.handleClose(pet._id)}>
-                                    <Close className={classes.modalClose} />
+                                        className={classes.modalCloseButton}
+                                        key="close"
+                                        aria-label="Close"
+                                        color="inherit"
+                                        onClick={() => this.handleClose(pet._id)}>
+                                        <Close className={classes.modalClose} />
                                     </IconButton>
                                     <h4 className={classNames(classes.modalTitle, classes.titleWrning)}>{`${pet.petType} para adoção`}</h4>
                                 </DialogTitle>
                                 <DialogContent
                                     id="modal-slide-description"
-                                    className={classes.modalBody}>
+                                    className={windowSizeDesktop && pet.images.length === 1 ? classes.modalBodyUniqueImage : classes.modalBody}>
                                     <label className={classes.descriptionModal}>
                                         {pet.description}
                                     </label>
@@ -132,8 +132,8 @@ class Pets extends React.Component {
                                         slidesToScroll: 1,
                                         autoplay: true}}>
                                         {
-                                            pet.images.map((image) => {
-                                                return <div className={classes.divCarousel}>
+                                            pet.images.map((image, index) => {
+                                                return <div key={index} className={classes.divCarousel}>
                                                 <img
                                                     src={image}
                                                     className={windowSizeDesktop ? classes.imgCarousel : classes.imgCarouselMobile}

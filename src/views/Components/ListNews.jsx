@@ -27,9 +27,9 @@ class News extends React.Component {
         const { classes } = this.props;
         return (
         <StackGrid monitorImagesLoaded={true} gridRef={grid => this.props.grid(grid)} columnWidth={this.state.columnWidth}>
-            {this.state.News.map((notice) => {
+            {this.state.News.map((notice, index) => {
             const descriptionCut = notice.description.length > 200 ? notice.description.substring(0, 145) + '...' : notice.description;
-            const hasImage = notice.imgSrc !== '';
+            const hasimage = notice.imgSrc !== '';
             let icon = null;
             let iconColor = "";
 
@@ -52,17 +52,17 @@ class News extends React.Component {
                     break;
             }   
 
-            return <GridItem id={notice._id} hasImage={hasImage} xs>
+            return <GridItem key={index} id={notice._id} xs>
                 <Route render={({ history }) => (
                     <InfoArea
                     title={notice.title}
                     description={
                         <span>
                             <span onClick={() => this.newsDetailed(notice._id, history)} className={this.state.windowSize ? classNames(classes.hoverUnderline, classes.spanVerMais) : classNames(classes.hoverUnderline, classes.spanVerMais, classes.spanVerMaisMobile)}>Ver Mais</span>
-                            {hasImage ? <img width={"100%"} src={notice.imgSrc}></img> : ""} 
-                            <p>
+                            {hasimage ? <img width={"100%"} src={notice.imgSrc}></img> : ""} 
+                            <label className={classes.descriptionNews}>
                                 {descriptionCut}
-                            </p>
+                            </label>
                         </span>}
                     icon={icon}
                     iconColor={iconColor}

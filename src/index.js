@@ -43,14 +43,14 @@ ReactDOM.render(
                     timeout={{enter: 750, exit: 150}}
                   >
                     <Switch location={location}>
-                      <Route exact path={"/"} component={Home}/>
+                      <Route exact path={"/"} render={(props) => <Home {...props}/>}/>
                       <Route path={"/Contacts"} render={(props) => <Contacts {...props}/>}/>
-                      <Route path={"/Adopt"} component={Adopt}/>
-                      <Route path={"/Partner"} component={Partner} />
-                      <Route path={"/News/:id"} component={News} />
-                      <Route path={"/AdminManagement"} component={AdminManagement} />  
-                      <Route path={"/AdminContainer"} component={AdminContainer} />  
-                      <Route path={"/Us"} component={Us} />  
+                      <Route path={"/Adopt"} render={(props) => <Adopt {...props}/>}/>
+                      <Route path={"/Partner"} render={(props) => <Partner {...props}/>} />
+                      <Route path={"/News/:id"} render={(props) => <News {...props}/>} />
+                      <Route path={"/AdminManagement"} render={(props) => <AdminManagement {...props}/>} />  
+                      <Route path={"/AdminContainer"} render={(props) => <AdminContainer {...props}/>} />  
+                      <Route path={"/Us"} render={(props) => <Us {...props}/>} />  
                     </Switch>
                   </Transition>
                 </TransitionGroup>
