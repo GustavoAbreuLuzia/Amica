@@ -59,6 +59,11 @@ class LoginPage extends React.Component {
       [stateName]: newValue.currentTarget.value
     });
   }
+  handleEnterKey(e){
+    if (e.key === 'Enter') {
+      this.loginButton.click();
+    }
+  }
   login(history){
     let fullFilled = true;
 
@@ -133,6 +138,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           ),
                           onChange: evt => this.updateInputState("userName", evt),
+                          onKeyDown: evt => this.handleEnterKey(evt),
                           maxLength: 100,
                           value: this.state.userName
                         }}
@@ -154,6 +160,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           ),
                           onChange: evt => this.updateInputState("password", evt),
+                          onKeyDown: evt => this.handleEnterKey(evt),
                           maxLength: 100,
                           value: this.state.password
                         }}
@@ -161,8 +168,8 @@ class LoginPage extends React.Component {
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
                       <Route render={({ history }) => (
-                        <Button onClick={() => this.login(history)} simple color="primary" size="lg">
-                          Entrar
+                        <Button simple color="primary" size="lg">
+                          <span ref={input => this.loginButton = input} onClick={() => this.login(history)}>Entrar</span>
                         </Button>
                       )} /> 
                     </CardFooter>

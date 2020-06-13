@@ -75,19 +75,21 @@ class Home extends React.Component {
                         <div>
                           <h3 className={classes.title}>A felicidade tem uma forma!</h3>
                           <h5>
-                            São tantos os animais que necessitam de apoio no Distrito de Bragança. A
-                            nossa organização sem fins lucrativos, tem como objetivo promover o Bem Estar dos Animais e dar voz aos seus direitos,
-                            em especial aos cães, animais que conseguem sob quaisquer circuntâncias
-                            alegrar o ambiente familiar.
+                          A Associação Amicus Canis – AMICA, é uma organização sem fins lucrativos, sediada em Bragança, que tem como objetivo principal promover o bem-estar animal.
+                          <br/>
+                          É constituída por voluntários que emprestam o seu tempo por um bem maior. Trata de resgatar, recuperar, esterilizar e dar os animais para adoção responsável. Procede também, à captura, esterilização e devolução de animais à rua, nomeadamente, gatos, para evitar a sua proliferação.
+                          <br/>
+                          Dá voz aos direitos dos animais!
                           </h5>
                         </div> :
                         <div>
                           <h1 className={classes.title}>A felicidade tem uma forma!</h1>
                           <h4>
-                            São tantos os animais que necessitam de apoio no Distrito de Bragança. A
-                            nossa organização sem fins lucrativos, tem como objetivo promover o Bem Estar dos Animais e dar voz aos seus direitos,
-                            em especial aos cães, animais que conseguem sob quaisquer circuntâncias
-                            alegrar o ambiente familiar.
+                          A Associação Amicus Canis – AMICA, é uma organização sem fins lucrativos, sediada em Bragança, que tem como objetivo principal promover o bem-estar animal.
+                          <br/>
+                          É constituída por voluntários que emprestam o seu tempo por um bem maior. Trata de resgatar, recuperar, esterilizar e dar os animais para adoção responsável. Procede também, à captura, esterilização e devolução de animais à rua, nomeadamente, gatos, para evitar a sua proliferação.
+                          <br/>
+                          Dá voz aos direitos dos animais!
                           </h4>
                         </div>
                       }

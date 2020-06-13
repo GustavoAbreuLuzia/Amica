@@ -230,8 +230,11 @@ class Partners extends React.Component {
                         <GridContainer xs={12} className={windowSizeDesktop ? "" : classes.containerMobile}>
                             <GridItem xs={12}>
                                 <p className={classes.primaryColor}>
-                                    A Associação Amicus Canis – AMICA, ajuda muitos animais, esterilizando-os para que não se reproduzam e para potenciar a sua adoção, alimentando-os e tratando-os quando estão doentes.
-                                    Por 15 € anuais, pode ser sócio da AMICA e possibilitar a ajuda a mais animais. Este cartão, de validade anual, dá-lhe acesso a descontos e vantagens em várias empresas amigas dos animais que apoiam a nossa causa.
+                                A Associação AMICA, esteriliza, alimenta e cuida de animais que tem ao seu cuidado, e dá os cuidados veterinários aos que deles carecem quando resgatados. Para isso, precisa de recursos monetários por vezes escassos. Mas pode ajudar a nossa causa!
+                                <br/>
+                                Ser sócio da AMICA dá-lhe um cartão com muitas vantagens!
+                                <br/>
+                                São 15 € por ano e o cartão tem validade anual. Com o cartão, tem acesso a descontos em várias empresas "amigas" dos animais.
                                 </p>
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 6 : 12}>
@@ -370,12 +373,12 @@ class Partners extends React.Component {
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 6 : 12} className={windowSizeDesktop ? classes.primaryColor : classNames(classes.primaryColor, classes.textCenterMobile)}> 
                                 <p className={classes.contactAccountSub}>
-                                    Além deste registo é necessário enviar o comprovativo do depósito por e-mail:<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
-                                    EMAIL: AssociacaoAmica@hotmail.com<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
+                                    * Enviar comprovativo do depósito por e-mail<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
+                                    Email: AssociacaoAmica@hotmail.com<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
                                     IBAN: PT50 0045 2216 4027 1549 63919<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
                                     IBAN/SWIFT: CCCMPTPL<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
                                     MBWAY: 926708103<br/>{this.state.windowSize < 780 && windowHeightDesktop ? <br/> : ""}
-                                    PAYPAL: paypal.me/amicuscanis
+                                    PAYPAL: <a target="_blank" href="https://paypal.me/amicuscanis">paypal.me/amicuscanis</a> 
                                 </p>
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 4 : 6} className={classes.contactSendMessage}>
@@ -405,15 +408,15 @@ class Partners extends React.Component {
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 6 : 12} className={classes.primaryColor}>
                                 <ul className={windowSizeDesktop ? classes.textConditions : classNames(classes.textConditions, classes.termsMobile)}> 
-                                    <li>Os parceiros serão atualizados à medida de novas parcerias.</li>
-                                    <li>No pagamento da cota anual, recebem uma vinheta que cola no cartão que lhes é fornecido.</li>
-                                    <li>Os cartões e as vinhetas serão levantados no posto da Galp, Sacor, junto ao Polis.</li>
+                                    <li>Mediante o pagamento da cota anual, o sócio recebe uma vinheta que será colada no cartão fornecido em espaço indicado;</li>
+                                    <li>Os cartões e vinhetas são levantados no Posto Galp, Sacor, junto ao Polis, ou em local a combinar;</li>
+                                    <li>Os parceiros com acordo em vigor são os indicados abaixo;</li>
                                 </ul>
                             </GridItem>
                             <GridItem xs={windowSizeDesktop ? 6 : 12} className={classes.primaryColor}>
                                 <ul className={windowSizeDesktop ? classes.textConditions : classNames(classes.textConditions, classes.termsMobile)}>
-                                    <li>Nos vários parceiros, através da apresentação do cartão, têm direito aos descontos acordados.</li>    
-                                    <li>No caso de o sócio não pagar as cotas durante dois anos consecutivos será eliminado da lista de sócios.</li>
+                                    <li>Com a apresentação do cartão nos estabelecimentos dos parceiros, e desde que a cota se encontre liquidada, os sócios têm direito aos descontos acordados;</li>    
+                                    <li>O não pagamento de cota por 2 anos consecutivos implica a suspensão de associado.</li>
                                 </ul>
                             </GridItem>
                         </GridContainer>

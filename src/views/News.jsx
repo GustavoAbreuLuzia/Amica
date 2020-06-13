@@ -48,7 +48,8 @@ class News extends React.Component {
         if (this.state.listNews === null){
             const news = await api.get('/api/News', {
                 params: {
-                    quantity: 4
+                    quantity: 4,
+                    currentId: `${this.state.id}`
                 }
             });        
             this.setState({listNews: news.data});
@@ -135,11 +136,12 @@ class News extends React.Component {
                         : ""
                     }
                 </GridContainer>
-                <h4 className={classNames(classes.title, classes.titleWrning, classes.subTitleMarginLeft)}>Últimas Notícias</h4>
                 {
-                    this.state.listNews !== null ?
-                        <ListNews grid={(newGrid) => this.setState({grid: newGrid})} News={this.state.listNews} columnWidth={this.state.gridColumnWidth} classes={classes} windowSize={windowSizeDesktop} home={false}></ListNews>
-                    : ""
+                    this.state.listNews !== null && this.state.listNews.length > 0 &&       
+                    <div>                        
+                        <h4 className={classNames(classes.title, classes.titleWrning, classes.subTitleMarginLeft)}>Últimas Notícias</h4>
+                        <ListNews grid={(newGrid) => this.setState({grid: newGrid})} News={this.state.listNews} columnWidth={this.state.gridColumnWidth} classes={classes} windowSize={windowSizeDesktop} home={false}></ListNews>                                  
+                    </div>                                                              
                 }
                 </div>
             </div>

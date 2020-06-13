@@ -40,8 +40,7 @@ class Adopt extends React.Component {
         window.addEventListener("resize", this.updateDimensions);
         window.addEventListener("orientationchange", this.updateDimensions);
 
-        const pets = await api.get('/api/adopt');
-
+        let pets = await api.get('/api/adopt');
         this.setState({listPets: pets.data});
     }
     componentWillUnmount(){
@@ -77,7 +76,7 @@ class Adopt extends React.Component {
                                 <h2 className={classNames(classes.titleWrning, classes.title)}>Adote</h2>
                             </GridItem>
                             <GridItem className={classes.gridItemTitle} xs={12} sm={12} md={12}>
-                                <p className={classes.aboutAdopt}>A Associação Amicus Canis preocupa-se com os animais ao seu cuidado sendo todos provenientes da rua e/ou de maustratos, negligência ou falta de cuidados básicos de bem estar animal, garantindo que todos os seus animais sejam adotados mediante a assinatura e compromisso de um termo de Adoção Responsável. Todos os animais adotados são entregues com a primeira vacina, chip com registro no SIAC e castração/esterilização ou compromisso da mesma na devida idade.</p>
+                                <p className={classes.aboutAdopt}>Os cães e gatos disponíveis para adoção, provenientes da rua ou de situações de negligência e abandono, são adotados mediante assinatura de Termo de Responsabilidade. São entregues vacinados, com chip registado no SIAC, e esterilizados (ou com compromisso de esterilização na idade recomendada).</p>
                             </GridItem>
                         </GridContainer>
                         <CustomHeader
